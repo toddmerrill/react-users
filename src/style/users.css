@@ -1,0 +1,37 @@
+.leftlist {
+    padding: 5px;
+    border: 1px solid #6af;
+    border-left-width: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.current-row {
+    background-color: lightblue;
+}
+
+.btn-circle-ok {
+    color: green;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0px 40px 0px;
+    font-size: 25px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle-error {
+    color: red;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0px 40px 0px;
+    font-size: 25px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+body {
+    background-color: lightgray;
+}

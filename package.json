@@ -1,46 +1,52 @@
 {
-    "name": "react-user-client",
-    "version": "1.0.0",
-    "description": "React.js implementation of a simple master/detail form",
-    "scripts": {
-        "start": "webpack-dev-server --content-base build/",
-        "build:bundle": "webpack",
-        "watch:bundle": "watchify ./src/main.js -o ./build/main.js -v",
-        "build": "npm run build:bundle"
-    },
-    "repository": {
-        "type": "git",
-        "url": "ssh://todd@toddmerrill.com/home/todd/git/react-users"
-    },
-    "keywords": [
-        "react",
-        "redux",
-        "client",
-        "master",
-        "detail"
-    ],
-    "author": "Todd Merrill",
-    "license": "ISC",
-    "dependencies": {
-        "babel-core": "^6.21.0",
-        "react": "0.14.7",
-        "react-dom": "0.14.7"
-    },
-    "devDependencies": {
-        "babel-loader": "6.2.4",
-        "babel-preset-es2015": "6.6.0",
-        "babel-preset-react": "6.5.0",
-        "babel-preset-stage-0": "6.5.0",
-        "css-loader": "^0.26.1",
-        "html-webpack-plugin": "1.6.1",
-        "style-loader": "^0.13.1",
-        "watchify": "^3.7.0",
-        "webpack": "^1.13.3",
-        "webpack-dev-server": "^1.16.2",
-        "bootstrap": "^3.3.7",
-        "chai": "^3.5.0",
-        "mocha": "^3.0.2",
-        "ramda": "^0.22.1",
-        "users-api": "^1.0.2"
-    }
+  "name": "react-user-client",
+  "version": "1.0.0",
+  "description": "React.js implementation of a simple master/detail form",
+  "scripts": {
+    "start": "webpack-dev-server --content-base build/",
+    "build:bundle": "webpack",
+    "watch:bundle": "watchify ./src/main.js -o ./build/main.js -v",
+    "build": "npm run build:bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://todd@toddmerrill.com/home/todd/git/react-users"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "client",
+    "master",
+    "detail"
+  ],
+  "author": "Todd Merrill",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.21.0",
+    "babel-preset-react": "^6.5.0",
+    "bootstrap": "^3.3.7",
+    "react": "^0.14.7",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "bootstrap": "^3.3.7",
+    "chai": "^3.5.0",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "1.6.1",
+    "mocha": "^3.0.2",
+    "ramda": "^0.22.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "users-api": "^1.0.2",
+    "watchify": "^3.7.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
 }

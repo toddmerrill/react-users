@@ -10,7 +10,7 @@
     background-color: lightblue;
 }
 
-.btn-circle-ok {
+.btn-circle-plus {
     color: green;
     width: 30px;
     height: 30px;
@@ -21,7 +21,7 @@
     border-radius: 15px;
 }
 
-.btn-circle-error {
+.btn-circle-minus {
     color: red;
     width: 30px;
     height: 30px;

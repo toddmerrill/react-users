@@ -65,6 +65,7 @@ class Users extends React.Component {
 
   render() {
     return (
+        <div>
         <div className="col-md-4">
             <h2>Users
                 <a className="btn btn-circle-plus">
@@ -76,6 +77,31 @@ class Users extends React.Component {
             </h2>
             <UserList users={userList.users}/>
         </div>
+        <div className="col-md-6 content">
+            <h2>Personal Information</h2>
+            <form className="form-horizontal">
+                <div className="form-group">
+                    <label className="control-label" for="inputFirstName">First Name</label>
+                    <div className="controls">
+                        <input type="text" className="form-control" id="inputFirstName" placeholder="First Name"
+                               autofocus focus="focusInput" tabindex="0" />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="control-label" for="inputLastName">Last Name</label>
+                    <div className="controls">
+                        <input type="text" className="form-control" id="inputLastName" placeholder="Last Name" />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="control-label" for="inputAge">Age</label>
+                    <div className="controls">
+                        <input type="text" className="form-control" id="inputAge" placeholder="Age" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     );
   }
 }

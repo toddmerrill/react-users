@@ -37,12 +37,53 @@ function User(props) {
   );
 }
 
+function UserForm(props) {
+  return (
+      <div className="col-md-6 content">
+          <h2>Personal Information</h2>
+          <form className="form-horizontal">
+              <div className="form-group">
+                  <label className="control-label" htmlFor="inputFirstName">First Name</label>
+                  <div className="controls">
+                      <input type="text" className="form-control" id="inputFirstName" placeholder="First Name"
+                             autofocus focus="focusInput" tabIndex="0" />
+                  </div>
+              </div>
+              <div className="form-group">
+                  <label className="control-label" htmlFor="inputLastName">Last Name</label>
+                  <div className="controls">
+                      <input type="text" className="form-control" id="inputLastName" placeholder="Last Name" />
+                  </div>
+              </div>
+              <div className="form-group">
+                  <label className="control-label" htmlFor="inputAge">Age</label>
+                  <div className="controls">
+                      <input type="text" className="form-control" id="inputAge" placeholder="Age" />
+                  </div>
+              </div>
+          </form>
+      </div>
+  );
+}
+
+function UserHeader(props) {
+    return (
+        <h2>Users
+            <a className="btn btn-circle-plus">
+                <span className="glyphicon glyphicon-plus-sign"></span>
+            </a>
+            <a className="btn btn-circle-minus">
+                <span className="glyphicon glyphicon-minus-sign"></span>
+            </a>
+        </h2>
+    );
+}
 
 function UserList(props) {
-  const userList = props.users.map((user, index) => {return <User key={index} user={user}/>});
-  return (
-      <div>{userList}</div>
-  );
+    const userList = props.users.map((user, index) => {return <User key={index} user={user}/>});
+    return (
+        <div>{userList}</div>
+    );
 }
 
 const getStartState = () => {
@@ -67,40 +108,10 @@ class Users extends React.Component {
     return (
         <div>
         <div className="col-md-4">
-            <h2>Users
-                <a className="btn btn-circle-plus">
-                    <span className="glyphicon glyphicon-plus-sign"></span>
-                </a>
-                <a className="btn btn-circle-minus">
-                    <span className="glyphicon glyphicon-minus-sign"></span>
-                </a>
-            </h2>
+            <UserHeader />
             <UserList users={userList.users}/>
         </div>
-        <div className="col-md-6 content">
-            <h2>Personal Information</h2>
-            <form className="form-horizontal">
-                <div className="form-group">
-                    <label className="control-label" for="inputFirstName">First Name</label>
-                    <div className="controls">
-                        <input type="text" className="form-control" id="inputFirstName" placeholder="First Name"
-                               autofocus focus="focusInput" tabindex="0" />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="control-label" for="inputLastName">Last Name</label>
-                    <div className="controls">
-                        <input type="text" className="form-control" id="inputLastName" placeholder="Last Name" />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="control-label" for="inputAge">Age</label>
-                    <div className="controls">
-                        <input type="text" className="form-control" id="inputAge" placeholder="Age" />
-                    </div>
-                </div>
-            </form>
-        </div>
+        <UserForm />
     </div>
     );
   }

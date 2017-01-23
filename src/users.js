@@ -33,7 +33,7 @@ const userList = {
 
 function User(props) {
   return (
-      <div className="leftlist"><h4>{props.user.firstName} {props.user.lastName}</h4></div>
+      <div className="listrow"><h4>{props.user.firstName} {props.user.lastName}</h4></div>
   );
 }
 
@@ -68,21 +68,24 @@ function UserForm(props) {
 
 function UserHeader(props) {
     return (
-        <h2>Users
-            <a className="btn btn-circle-plus">
-                <span className="glyphicon glyphicon-plus-sign"></span>
+        <div className="listHeader">
+            <h2 className="oneLine">Users</h2>
+            <span className="rightButtons">
+            <a className="nohover">
+                <span className="btn-circle btn-ok" />
             </a>
-            <a className="btn btn-circle-minus">
-                <span className="glyphicon glyphicon-minus-sign"></span>
+            <a className="nohover">
+                <span className="btn-circle btn-error" />
             </a>
-        </h2>
+            </span>
+        </div>
     );
 }
 
 function UserList(props) {
     const userList = props.users.map((user, index) => {return <User key={index} user={user}/>});
     return (
-        <div>{userList}</div>
+        <div className="listItems">{userList}</div>
     );
 }
 
@@ -93,6 +96,7 @@ const getStartState = () => {
 class Users extends React.Component {
     constructor() {
     super();
+    console.log('blablabla xxxxx')
     this.state = getStartState();
   }
 
@@ -107,7 +111,7 @@ class Users extends React.Component {
   render() {
     return (
         <div>
-        <div className="col-md-4">
+        <div className="leftList" class="col-md-4">
             <UserHeader />
             <UserList users={userList.users}/>
         </div>

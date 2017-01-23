@@ -1,4 +1,11 @@
-.leftlist {
+.leftList {
+    float:left;
+    width: 50%;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.listrow {
     padding: 5px;
     border: 1px solid #6af;
     border-left-width: 5px;
@@ -10,27 +17,81 @@
     background-color: lightblue;
 }
 
-.btn-circle-plus {
-    color: green;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0px 40px 0px;
-    font-size: 25px;
-    line-height: 1.428571429;
-    border-radius: 15px;
+.listHeader {
+    width: 50%;
+    display: inline;
+    padding: 15px;
 }
 
-.btn-circle-minus {
-    color: red;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0px 40px 0px;
-    font-size: 25px;
-    line-height: 1.428571429;
-    border-radius: 15px;
+.listItems {
+    padding: 15px;
 }
+
+.lefttheader {
+
+}
+
+.righttheader {
+    float:right;
+}
+
+a.nohover {
+    text-decoration: none;
+}
+
+h2.oneLine {
+    display: inline;
+}
+
+.rightButtons {
+    float: right;
+    padding-right: 30px;
+}
+
+.btn-circle {
+    display:inline-block;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 39px;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.btn-circle.btn-ok {
+    background-color: green;
+}
+
+.btn-ok::before {
+    content: "+";
+}
+
+.btn-circle.btn-error {
+    background-color: red;
+    line-height: 29px;
+    vertical-align: 4px;
+}
+
+.btn-error::before {
+    content: "-";
+}
+
+.btn-circle:hover {
+    background: #262626;
+}
+
+.btn-circle:active {
+    color: lightblue;
+    border-color: lightblue;
+}
+
+
 
 body {
     background-color: lightgray;

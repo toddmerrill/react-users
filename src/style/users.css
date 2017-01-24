@@ -1,8 +1,17 @@
 .leftList {
     float:left;
-    width: 50%;
+    width: 49%;
+    min-width: 300px;
     overflow: hidden;
     padding: 10px;
+}
+
+.rightList {
+    float:left;
+    width: 49%;
+    min-width: 300px;
+    overflow: hidden;
+    padding: 20px;
 }
 
 .listrow {
@@ -11,6 +20,14 @@
     border-left-width: 5px;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.listrow:hover {
+    border-color: #c2e6e8;
+}
+
+.listrow:active {
+    background-color: lightblue;
 }
 
 .current-row {
@@ -27,16 +44,8 @@
     padding: 15px;
 }
 
-.lefttheader {
-
-}
-
 .righttheader {
     float:right;
-}
-
-a.nohover {
-    text-decoration: none;
 }
 
 h2.oneLine {
@@ -91,6 +100,27 @@ h2.oneLine {
     border-color: lightblue;
 }
 
+.controlLabel {
+    color: black;
+}
+
+.formField {
+    box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    color: rgb(85, 85, 85);
+    display: block;
+    height: 34px;
+    text-size-adjust: 100%;
+    width: 336.422px;
+    column-rule-color: rgb(85, 85, 85);
+    perspective-origin: 168.203px 17px;
+    transform-origin: 168.203px 17px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px 4px 4px 4px;
+    font: normal normal normal normal 14px / 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    outline: rgb(85, 85, 85) none 0px;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
 
 
 body {

@@ -3,7 +3,7 @@ const R = require('ramda')
 const usersApi = require('users-api');
 
 function User(props) {
-  let rowClass="listrow";
+  let rowClass= props.isCurrentUser ? "listrow current-row" : "listrow";
   return (
       <div className={rowClass} onClick={() => props.onClick(props.user)}><h4>{props.user.firstName} {props.user.lastName}</h4></div>
   );
@@ -57,52 +57,64 @@ function UserHeader(props) {
 }
 
 function UserList(props) {
-    const userList = props.users.map((user, index) => {return <User key={user.userId} user={user} onClick={props.userClick}/>});
+    const userList = props.users.map((user, index) => {
+        const isCurrentUser = user.userId === props.currentUser.userId || false
+        return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>
+    });
     return (
         <div className="listItems">{userList}</div>
     );
 }
 
-function retrieveUserState(component) {
-
+function retrieveUsersState(component) {
+    usersApi.retrieveUsers(function success(response) {
+        console.log('GET Result: ' + JSON.stringify(response));
+        this.setState({
+            users: response.users,
+            currentUser: (response.users && response.users.length > 0)
+                            ? response.users[0] : null
+        })
+    }.bind(component), function error(response) {
+        console.log('HTTP GET failed: ' + JSON.stringify(response));
+    }.bind(component));
 }
+
+function saveUser(component, user) {
+    usersApi.saveUser(function(response) {
+        console.log('saving user')
+        const savedUser = response;
+        const userList = R.update(R.findIndex(R.propEq('userId', this.state.currentUser.userId)),
+                                  savedUser, this.state.users);
+        this.setState({
+            users: userList,
+            currentUser: savedUser
+        });
+        console.log('saved user: ' + JSON.stringify(savedUser));
+    }.bind(component),
+    function(response) {
+        console.log('HTTP POST failed: ' + JSON.stringify(response));
+    }.bind(component),
+    user);
+};
 
 class Users extends React.Component {
   constructor() {
     super();
     this.state = { users: [], currentUser: {} };
-    usersApi.retrieveUsers(function success(response) {
-        console.log('GET Result: ' + JSON.stringify(response));
-        const users = response.users;
-        let currentUser = (users && users.length > 0) ? users[0] : null;
-        this.setState({
-            users: users,
-            currentUser: currentUser
-        })
-    }.bind(this), function error(response) {
-        console.log('HTTP GET failed: ' + JSON.stringify(response));
-    }.bind(this));
-
-
-
-    // this.state = getStartState();
+    retrieveUsersState(this);
     this.handleUserClick = this.handleUserClick.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
   }
 
  handleUserClick(user) {
      this.setState({currentUser: user});
-     console.log('current-user:',this.state.currentUser.firstName, this.state.currentUser.lastName);
   }
 
   handleFormChange(e) {
+      console.log('handling form change')
       const changedUser = R.clone(this.state.currentUser);
       changedUser[e.target.name] = e.target.value;
-      const users = this.state.users.map((user) => {
-          return user.userId === changedUser.userId ? changedUser : user;
-      });
-      this.setState({users: users,
-                     currentUser: changedUser});
+      saveUser(this, changedUser);
   }
 
   render() {
@@ -110,7 +122,7 @@ class Users extends React.Component {
         <div>
         <div className="leftList" class="col-md-4">
             <UserHeader />
-            <UserList users={this.state.users} userClick={this.handleUserClick}/>
+            <UserList users={this.state.users} currentUser={this.state.currentUser} userClick={this.handleUserClick}/>
         </div>
         <UserForm user={this.state.currentUser} onChange={this.handleFormChange}/>
     </div>

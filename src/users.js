@@ -1,36 +1,6 @@
 import React from 'react'
 const R = require('ramda')
-
-const userList = {
-    "users": [
-        {
-            "userId": "vrkkq9leh",
-            "firstName": "Jane",
-            "lastName": "Derane",
-            "age": "111"
-        }, {
-            "userId": "qsgg0uv84",
-            "firstName": "Kavita",
-            "lastName": "Blalita",
-            "age": "8"
-        }, {
-            "userId": "oi7i7lpte",
-            "firstName": "Johnny",
-            "lastName": "Blow",
-            "age": "5455"
-        }, {
-            "userId": "k49e0vv9s",
-            "firstName": "Daniel J.",
-            "lastName": "Whaaa?",
-            "age": "999"
-        }, {
-            "userId": "tutadlocy",
-            "firstName": "Joe",
-            "lastName": "Blow",
-            "age": "333"
-        }
-    ]
-}
+const usersApi = require('users-api');
 
 function User(props) {
   let rowClass="listrow";
@@ -93,18 +63,29 @@ function UserList(props) {
     );
 }
 
-const getStartState = () => {
-    const firstUser = userList.users.length > 0 ? userList.users[0] : null;
-   return {
-       users: userList.users,
-       currentUser: firstUser
-   };
+function retrieveUserState(component) {
+
 }
 
 class Users extends React.Component {
   constructor() {
     super();
-    this.state = getStartState();
+    this.state = { users: [], currentUser: {} };
+    usersApi.retrieveUsers(function success(response) {
+        console.log('GET Result: ' + JSON.stringify(response));
+        const users = response.users;
+        let currentUser = (users && users.length > 0) ? users[0] : null;
+        this.setState({
+            users: users,
+            currentUser: currentUser
+        })
+    }.bind(this), function error(response) {
+        console.log('HTTP GET failed: ' + JSON.stringify(response));
+    }.bind(this));
+
+
+
+    // this.state = getStartState();
     this.handleUserClick = this.handleUserClick.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
   }

@@ -1,0 +1,4 @@
+- Remove Bootstrap
+- Unit testing coverage
+- Redux
+- Documentation

@@ -81,10 +81,13 @@ function retrieveUsersState(component) {
 
 function saveUser(component, user) {
     usersApi.saveUser(function(response) {
-        console.log('saving user')
+        if (!response.userId) {
+            console.log("ERROR! AWS returned empty user object.")
+            return
+        }
         const savedUser = response;
-        const userList = R.update(R.findIndex(R.propEq('userId', this.state.currentUser.userId)),
-                                  savedUser, this.state.users);
+        const currentUserIndex = R.findIndex(R.propEq('userId', this.state.currentUser.userId), this.state.users);
+        const userList = R.update(currentUserIndex, savedUser, this.state.users);
         this.setState({
             users: userList,
             currentUser: savedUser

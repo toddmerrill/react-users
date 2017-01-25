@@ -45,10 +45,10 @@ function UserHeader(props) {
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
-            <a className="nohover">
+            <a className="nohover" onClick={props.addUser}>
                 <span className="btn-circle btn-ok" />
             </a>
-            <a className="nohover">
+            <a className="nohover" onClick={props.removeUser}>
                 <span className="btn-circle btn-error" />
             </a>
             </span>
@@ -92,12 +92,44 @@ function saveUser(component, user) {
             users: userList,
             currentUser: savedUser
         });
-        console.log('saved user: ' + JSON.stringify(savedUser));
     }.bind(component),
     function(response) {
         console.log('HTTP POST failed: ' + JSON.stringify(response));
     }.bind(component),
     user);
+};
+
+function getUserId() {
+    return Math.random().toString(36).substr(2, 9);
+};
+
+function createUser(component) {
+    const newUser = { userId: getUserId(),
+            firstName: "First",
+            lastName: "Last",
+            age: 0
+        }
+    const userList = R.concat([newUser], component.state.users);
+    component.setState({
+        users: userList,
+        currentUser: newUser
+    });
+    saveUser(component, newUser);
+};
+
+function deleteCurrentUser(component) {
+    const user = component.state.currentUser;
+    usersApi.deleteUser(function(response) {
+        console.log('successfully deleted user ' + user.userId + ': ' + JSON.stringify(response));
+        const userList = R.without([user], this.state.users);
+        const currentUser = userList.length > 0 ? userList[0] : null;
+        this.setState({
+            users: userList,
+            currentUser: currentUser
+        });
+    }.bind(component), function(response) {
+        console.log('HTTP DELETE failed: ' + JSON.stringify(response));
+    }.bind(component), user);
 };
 
 class Users extends React.Component {
@@ -107,14 +139,23 @@ class Users extends React.Component {
     retrieveUsersState(this);
     this.handleUserClick = this.handleUserClick.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleAddUser = this.handleAddUser.bind(this);
+    this.handleDeleteUser = this.handleDeleteUser.bind(this);
   }
 
  handleUserClick(user) {
      this.setState({currentUser: user});
   }
 
+ handleAddUser() {
+     createUser(this);
+  }
+
+ handleDeleteUser() {
+     deleteCurrentUser(this);
+ }
+
   handleFormChange(e) {
-      console.log('handling form change')
       const changedUser = R.clone(this.state.currentUser);
       changedUser[e.target.name] = e.target.value;
       saveUser(this, changedUser);
@@ -124,7 +165,7 @@ class Users extends React.Component {
     return (
         <div>
         <div className="leftList" class="col-md-4">
-            <UserHeader />
+            <UserHeader addUser={this.handleAddUser} removeUser={this.handleDeleteUser}/>
             <UserList users={this.state.users} currentUser={this.state.currentUser} userClick={this.handleUserClick}/>
         </div>
         <UserForm user={this.state.currentUser} onChange={this.handleFormChange}/>

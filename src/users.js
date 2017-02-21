@@ -18,7 +18,7 @@ function UserForm(props) {
                   <label className="controlLabel" class="control-label" htmlFor="inputFirstName">First Name</label>
                   <div className="controls">
                       <input name="firstName" type="text" className="form-control" id="inputFirstName" placeholder="First Name"
-                             autofocus focus="focusInput" tabIndex="0" value={props.user.firstName} onChange={props.onChange}/>
+                             autoFocus tabIndex="0" value={props.user.firstName} onChange={props.onChange}/>
                   </div>
               </div>
               <div className="form-group">
@@ -141,6 +141,7 @@ class Users extends React.Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleAddUser = this.handleAddUser.bind(this);
     this.handleDeleteUser = this.handleDeleteUser.bind(this);
+    console.log("*************", this.props.addUser);
   }
 
  handleUserClick(user) {

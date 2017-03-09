@@ -57,6 +57,7 @@ function UserHeader(props) {
 }
 
 function UserList(props) {
+    console.log('current user', props.currentUser)
     const userList = props.users.map((user, index) => {
         const isCurrentUser = user.userId === props.currentUser.userId || false
         return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>
@@ -133,43 +134,43 @@ function deleteCurrentUser(component) {
 };
 
 class Users extends React.Component {
-  constructor() {
-    super();
-    this.state = { users: [], currentUser: {} };
-    retrieveUsersState(this);
-    this.handleUserClick = this.handleUserClick.bind(this);
-    this.handleFormChange = this.handleFormChange.bind(this);
-    this.handleAddUser = this.handleAddUser.bind(this);
-    this.handleDeleteUser = this.handleDeleteUser.bind(this);
-    console.log("*************", this.props.addUser);
+  constructor(props) {
+    super(props);
+    // this.state = { users: [], currentUser: {} };
+    // retrieveUsersState(this);
+    // this.handleUserClick = this.handleUserClick.bind(this);
+    // this.handleFormChange = this.handleFormChange.bind(this);
+    // this.handleAddUser = this.handleAddUser.bind(this);
+    // this.handleDeleteUser = this.handleDeleteUser.bind(this);
+    console.log("*************", this.props);
   }
 
- handleUserClick(user) {
-     this.setState({currentUser: user});
-  }
+ // handleUserClick(user) {
+ //     this.setState({currentUser: user});
+ //  }
 
- handleAddUser() {
-     createUser(this);
-  }
-
- handleDeleteUser() {
-     deleteCurrentUser(this);
- }
-
-  handleFormChange(e) {
-      const changedUser = R.clone(this.state.currentUser);
-      changedUser[e.target.name] = e.target.value;
-      saveUser(this, changedUser);
-  }
+ // handleAddUser() {
+ //     createUser(this);
+ //  }
+ //
+ // handleDeleteUser() {
+ //     deleteCurrentUser(this);
+ // }
+ //
+ //  handleFormChange(e) {
+ //      const changedUser = R.clone(this.state.currentUser);
+ //      changedUser[e.target.name] = e.target.value;
+ //      saveUser(this, changedUser);
+ //  }
 
   render() {
     return (
         <div>
         <div className="leftList" class="col-md-4">
-            <UserHeader addUser={this.handleAddUser} removeUser={this.handleDeleteUser}/>
-            <UserList users={this.state.users} currentUser={this.state.currentUser} userClick={this.handleUserClick}/>
+            <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}/>
+            <UserList users={this.props.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
         </div>
-        <UserForm user={this.state.currentUser} onChange={this.handleFormChange}/>
+        <UserForm user={this.props.currentUser} onChange={this.props.updateUser}/>
     </div>
     );
   }

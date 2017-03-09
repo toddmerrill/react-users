@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router'
 import rootReducer from './reducers/index';
 
 // static state to play with while moving to redux
-const users = {
+const serverResponse = {
     "users": [{
         "userId": "uu5dgnvdc",
         "firstName": "Dannydddd",
@@ -41,7 +41,8 @@ const users = {
 };
 
 const defaultState = {
-    users
+    users: serverResponse.users,
+    currentUser: serverResponse.users[3]
 };
 
 const enhancers = compose(

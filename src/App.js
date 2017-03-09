@@ -5,7 +5,8 @@ import Users from './users';
 
 function mapStateToProps(state) {
     return {
-        users: state.users
+        users: state.users,
+        currentUser: state.currentUser
     }
 }
 

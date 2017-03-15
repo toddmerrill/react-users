@@ -11,7 +11,13 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actionCreators, dispatch);
+    return {
+        updateUser: (user) => {
+            dispatch(actionCreators.updateUser(user))
+            dispatch(actionCreators.setCurrentUser(user))
+        },
+        setCurrentUser: (user) => dispatch(actionCreators.setCurrentUser(user))
+    }
 }
 
 const App = connect(mapStateToProps, mapDispatchToProps)(Users);

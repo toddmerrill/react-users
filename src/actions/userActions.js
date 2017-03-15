@@ -14,8 +14,16 @@ export const addUser = user => {
     }
 }
 
-export const updateUser = (userId, user) => {
-    console.log('calling updateUser', userId, user)
+export const updateUser = (user) => {
+    console.log('calling updateUser', user)
+    return {
+        type: 'UPDATE_USER',
+        user
+    }
+}
+
+export const persistUser = (userId, user) => {
+    console.log('calling persistUser', userId, user)
     return {
         type: 'UPDATE_USER',
         userId,

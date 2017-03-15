@@ -10,9 +10,7 @@ function User(props) {
 }
 
 function UserForm(props) {
-    console.log('t1',props.onChange)
-
-    console.log('t2')
+  const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
   return (
       <div className="rightList" class="col-md-6 content">
           <h2>Personal Information</h2>
@@ -21,21 +19,21 @@ function UserForm(props) {
                   <label className="controlLabel" class="control-label" htmlFor="inputFirstName">First Name</label>
                   <div className="controls">
                       <input name="firstName" type="text" className="form-control" id="inputFirstName" placeholder="First Name"
-                             autoFocus tabIndex="0" value={props.user.firstName} onChange={props.onChange(props.user.userId, props.user)}/>
+                             autoFocus tabIndex="0" value={props.user.firstName} onChange={onChange} />
                   </div>
               </div>
               <div className="form-group">
                   <label className="control-label" htmlFor="inputLastName">Last Name</label>
                   <div className="controls">
                       <input name="lastName" type="text" className="form-control" id="inputLastName" placeholder="Last Name"
-                      value={props.user.lastName} onChange={props.onChange} />
+                      value={props.user.lastName} onChange={onChange} />
                   </div>
               </div>
               <div className="form-group">
                   <label className="control-label" htmlFor="inputAge">Age</label>
                   <div className="controls">
                       <input name="age" type="text" className="form-control" id="inputAge" placeholder="Age"
-                      value={props.user.age} onChange={props.onChange}/>
+                      value={props.user.age} onChange={onChange}/>
                   </div>
               </div>
           </form>
@@ -152,7 +150,6 @@ class Users extends React.Component {
     </div>
     );
   }
-
 
 }
 

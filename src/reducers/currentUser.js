@@ -1,7 +1,9 @@
+const R = require('ramda')
+
 function currentUser(state = [], action) {
     switch(action.type) {
         case 'SET_CURRENT_USER' :
-            return state;
+            return {...action.user};
         default:
             return state;
     }

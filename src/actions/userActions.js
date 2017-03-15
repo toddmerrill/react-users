@@ -1,5 +1,5 @@
 // add new user
-export function setCurrentUser(user) {
+export const setCurrentUser = user => {
     return {
         type: 'SET_CURRENT_USER',
         user
@@ -7,14 +7,15 @@ export function setCurrentUser(user) {
 }
 
 // add new user
-export function addUser(user) {
+export const addUser = user => {
     return {
         type: 'ADD_USER',
         user
     }
 }
 
-export function updateUser(userId, user) {
+export const updateUser = (userId, user) => {
+    console.log('calling updateUser', userId, user)
     return {
         type: 'UPDATE_USER',
         userId,
@@ -22,9 +23,18 @@ export function updateUser(userId, user) {
     }
 }
 
-export function deleteUser(userId) {
+export const deleteUser = userId => {
     return {
         type: 'DELETE_USER',
         userId
+    }
+}
+
+export const fetchUsersRequest = () => {
+    return {
+        type: 'FETCH_USERS_REQUEST',
+        status,
+        error,
+        response
     }
 }

@@ -10,6 +10,9 @@ function User(props) {
 }
 
 function UserForm(props) {
+    console.log('t1',props.onChange)
+
+    console.log('t2')
   return (
       <div className="rightList" class="col-md-6 content">
           <h2>Personal Information</h2>
@@ -18,7 +21,7 @@ function UserForm(props) {
                   <label className="controlLabel" class="control-label" htmlFor="inputFirstName">First Name</label>
                   <div className="controls">
                       <input name="firstName" type="text" className="form-control" id="inputFirstName" placeholder="First Name"
-                             autoFocus tabIndex="0" value={props.user.firstName} onChange={props.onChange}/>
+                             autoFocus tabIndex="0" value={props.user.firstName} onChange={props.onChange(props.user.userId, props.user)}/>
                   </div>
               </div>
               <div className="form-group">
@@ -57,7 +60,6 @@ function UserHeader(props) {
 }
 
 function UserList(props) {
-    console.log('current user', props.currentUser)
     const userList = props.users.map((user, index) => {
         const isCurrentUser = user.userId === props.currentUser.userId || false
         return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>
@@ -136,32 +138,8 @@ function deleteCurrentUser(component) {
 class Users extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { users: [], currentUser: {} };
-    // retrieveUsersState(this);
-    // this.handleUserClick = this.handleUserClick.bind(this);
-    // this.handleFormChange = this.handleFormChange.bind(this);
-    // this.handleAddUser = this.handleAddUser.bind(this);
-    // this.handleDeleteUser = this.handleDeleteUser.bind(this);
-    console.log("*************", this.props);
+    console.log("Initial props", this.props);
   }
-
- // handleUserClick(user) {
- //     this.setState({currentUser: user});
- //  }
-
- // handleAddUser() {
- //     createUser(this);
- //  }
- //
- // handleDeleteUser() {
- //     deleteCurrentUser(this);
- // }
- //
- //  handleFormChange(e) {
- //      const changedUser = R.clone(this.state.currentUser);
- //      changedUser[e.target.name] = e.target.value;
- //      saveUser(this, changedUser);
- //  }
 
   render() {
     return (
@@ -174,6 +152,8 @@ class Users extends React.Component {
     </div>
     );
   }
+
+
 }
 
 export default Users;

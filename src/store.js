@@ -42,7 +42,7 @@ const serverResponse = {
 
 const defaultState = {
     users: serverResponse.users,
-    currentUser: serverResponse.users[3]
+    currentUser: serverResponse.users[0]
 };
 
 const enhancers = compose(

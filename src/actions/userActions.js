@@ -22,12 +22,31 @@ export const updateUser = user => {
     }
 }
 
-export const persistUser = (userId, user) => {
-    console.log('calling persistUser', userId, user)
+export const requestPersistUser = () => {
     return {
-        type: 'UPDATE_USER',
-        userId,
-        user
+        type: 'PERSIST_USER'
+    }
+}
+
+export const userPersisted = (json) => {
+    return {
+        type: 'USER_PERSISTED',
+        user: json
+    }
+}
+
+export const persistUser = user => {
+    console.log('calling persistUser', user)
+    return dispatch => {
+        if (!user.firstName && !user.lastName) {return}
+        dispatch(requestPersistUser())
+        usersApi.saveUser(user).then(response => {
+            console.log('saveUser response', response)
+            dispatch(userPersisted(response))
+        }).catch(error => {
+            console.log('HTTP POST failed: ' + JSON.stringify(error));
+            return Promise.reject(error)
+        });
     }
 }
 
@@ -51,7 +70,7 @@ export const receiveUsers = json => {
     }
 }
 
-export const fetchUsers = (init) => {
+export const fetchUsers = init => {
     return dispatch => {
         dispatch(requestUsers())
         return usersApi.retrieveUsers().then(response => {

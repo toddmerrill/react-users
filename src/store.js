@@ -2,7 +2,6 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { syncHistoryWithStore } from 'react-router-redux'
-
 import { browserHistory } from 'react-router'
 
 import rootReducer from './reducers/index';
@@ -12,7 +11,7 @@ const loggerMiddleware = createLogger();
 
 const defaultState = {
     users: {isFetching: false, users: []},
-    currentUser: {}
+    currentUser: {firstName:'', lastName:'',age: 0}
 };
 
 const enhancers = compose(

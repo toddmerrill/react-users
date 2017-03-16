@@ -10,33 +10,31 @@ function User(props) {
 }
 
 function UserForm(props) {
-  const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
   return (
       <div className="rightList" class="col-md-6 content">
           <h2>Personal Information</h2>
           <form className="form-horizontal">
-              <div className="form-group">
-                  <label className="controlLabel" class="control-label" htmlFor="inputFirstName">First Name</label>
-                  <div className="controls">
-                      <input name="firstName" type="text" className="form-control" id="inputFirstName" placeholder="First Name"
-                             autoFocus tabIndex="0" value={props.user.firstName} onChange={onChange} />
-                  </div>
-              </div>
-              <div className="form-group">
-                  <label className="control-label" htmlFor="inputLastName">Last Name</label>
-                  <div className="controls">
-                      <input name="lastName" type="text" className="form-control" id="inputLastName" placeholder="Last Name"
-                      value={props.user.lastName} onChange={onChange} />
-                  </div>
-              </div>
-              <div className="form-group">
-                  <label className="control-label" htmlFor="inputAge">Age</label>
-                  <div className="controls">
-                      <input name="age" type="text" className="form-control" id="inputAge" placeholder="Age"
-                      value={props.user.age} onChange={onChange}/>
-                  </div>
-              </div>
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+                  fieldName="firstName" fieldLabel="First Name" autoFocus="true" tabIndex="1"/>
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+                  fieldName="lastName" fieldLabel="Last Name" tabIndex="2"/>
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+                  fieldName="age" fieldLabel="Age" tabIndex="3"/>
           </form>
+      </div>
+  );
+}
+
+function UserFormInput(props) {
+  const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
+  const onBlur = e => {console.log('firing onBlur'); props.onBlur(props.user) }
+  return (
+      <div className="form-group">
+          <label className="controlLabel" class="control-label" htmlFor={'input'+props.fieldName}>{props.fieldLabel}</label>
+          <div className="controls">
+              <input name={props.fieldName} type="text" className="form-control" id={'input'+props.fieldName} placeholder={props.fieldLabel}
+                     tabIndex={props.tabIndex} value={props.user[props.fieldName]} onChange={onChange} onBlur={onBlur}/>
+          </div>
       </div>
   );
 }
@@ -66,26 +64,6 @@ function UserList(props) {
         <div className="listItems">{userList}</div>
     );
 }
-
-function saveUser(component, user) {
-    usersApi.saveUser(function(response) {
-        if (!response.userId) {
-            console.log("ERROR! AWS returned empty user object.")
-            return
-        }
-        const savedUser = response;
-        const currentUserIndex = R.findIndex(R.propEq('userId', this.state.currentUser.userId), this.state.users);
-        const userList = R.update(currentUserIndex, savedUser, this.state.users);
-        this.setState({
-            users: userList,
-            currentUser: savedUser
-        });
-    }.bind(component),
-    function(response) {
-        console.log('HTTP POST failed: ' + JSON.stringify(response));
-    }.bind(component),
-    user);
-};
 
 function getUserId() {
     return Math.random().toString(36).substr(2, 9);
@@ -133,7 +111,7 @@ class Users extends React.Component {
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}/>
             <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
         </div>
-        <UserForm user={this.props.currentUser} onChange={this.props.updateUser} />
+        <UserForm user={this.props.currentUser} onChange={this.props.updateUser} onBlur={this.props.persistUser}/>
     </div>
     );
   }

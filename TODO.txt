@@ -1,4 +1,8 @@
+- add proptypes
+- refactor to action constants
+- add flowtype
+- add jest
+- refactor react components -> files
 - Remove Bootstrap
 - Unit testing coverage
-- Redux
 - Documentation

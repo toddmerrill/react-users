@@ -18,7 +18,10 @@ function mapDispatchToProps(dispatch) {
         },
         setCurrentUser: user => dispatch(actionCreators.setCurrentUser(user)),
         fetchUsers: () => dispatch(actionCreators.fetchUsers()),
-        receiveUsers: json => dispatch(actionCreators.receiveUsers(json))
+        receiveUsers: json => dispatch(actionCreators.receiveUsers(json)),
+        requestPersistUser: () => dispatch(actionCreators.requestPersistUser()),
+        persistUser: user => dispatch(actionCreators.persistUser(user)),
+        userPersisted: json => dispatch(actionCreators.userPersisted(json))
     }
 }
 

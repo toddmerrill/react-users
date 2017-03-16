@@ -8,6 +8,14 @@ function users(state = {isFetching: false, users: []}, action) {
         case 'ADD_USER' :
             console.log('adding user', action.user)
             return state;
+        case 'PERSIST_USER' :
+            console.log('persisting user to aws')
+            return state;
+            // return {isFetching: true};
+        case 'USER_PERSISTED' :
+        console.log('successfully persisted', action.user)
+            // return {isFetching: false};
+            return state;
         case 'UPDATE_USER' :
             console.log('updating user', action.user)
             return {...state, users: state.users.map(user => user.userId === action.user.userId ? {...action.user} : user)};

@@ -144,9 +144,9 @@ class Users extends React.Component {
         <div>
         <div className="leftList" class="col-md-4">
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}/>
-            <UserList users={this.props.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
+            <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
         </div>
-        <UserForm user={this.props.currentUser} onChange={this.props.updateUser}/>
+        <UserForm user={this.props.currentUser} onChange={this.props.updateUser} />
     </div>
     );
   }

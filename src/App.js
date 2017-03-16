@@ -5,18 +5,20 @@ import Users from './users';
 
 function mapStateToProps(state) {
     return {
-        users: state.users,
+        users: {...state.users},
         currentUser: state.currentUser
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateUser: (user) => {
+        updateUser: user => {
             dispatch(actionCreators.updateUser(user))
             dispatch(actionCreators.setCurrentUser(user))
         },
-        setCurrentUser: (user) => dispatch(actionCreators.setCurrentUser(user))
+        setCurrentUser: user => dispatch(actionCreators.setCurrentUser(user)),
+        fetchUsers: () => dispatch(actionCreators.fetchUsers()),
+        receiveUsers: json => dispatch(actionCreators.receiveUsers(json))
     }
 }
 

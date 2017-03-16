@@ -1,4 +1,5 @@
-// add new user
+const usersApi = require('users-api');
+
 export const setCurrentUser = user => {
     return {
         type: 'SET_CURRENT_USER',
@@ -14,8 +15,7 @@ export const addUser = user => {
     }
 }
 
-export const updateUser = (user) => {
-    console.log('calling updateUser', user)
+export const updateUser = user => {
     return {
         type: 'UPDATE_USER',
         user
@@ -38,11 +38,30 @@ export const deleteUser = userId => {
     }
 }
 
-export const fetchUsersRequest = () => {
+export const requestUsers = () => {
     return {
-        type: 'FETCH_USERS_REQUEST',
-        status,
-        error,
-        response
+        type: 'FETCH_USERS'
     }
+}
+
+export const receiveUsers = json => {
+    return {
+        type: 'RECEIVE_USERS',
+        users: json
+    }
+}
+
+export const fetchUsers = () => {
+    return dispatch => {
+        dispatch(requestUsers())
+        usersApi.retrieveUsers().then(response => {
+            console.log('GET Result: ' + JSON.stringify(response));
+            dispatch(receiveUsers(response))
+        }).catch(error => {
+            console.log('HTTP GET failed: ' + JSON.stringify(error));
+            throw new Error(error);
+        });
+    }
+
+
 }

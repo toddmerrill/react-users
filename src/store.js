@@ -1,9 +1,15 @@
-import { createStore, compose } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
+import { createStore, compose, applyMiddleware } from 'redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import { browserHistory } from 'react-router'
 
 import rootReducer from './reducers/index';
+import * as actionCreators from './actions/userActions';
+
+
+const loggerMiddleware = createLogger();
 
 // static state to play with while moving to redux
 const serverResponse = {
@@ -41,11 +47,12 @@ const serverResponse = {
 };
 
 const defaultState = {
-    users: serverResponse.users,
-    currentUser: serverResponse.users[0]
+    users: {isFetching: false, users: []},
+    currentUser: {}
 };
 
 const enhancers = compose(
+    applyMiddleware(thunkMiddleware, loggerMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
@@ -59,5 +66,7 @@ if(module.hot) {
         store.replaceReducer(nextRootReducer);
     });
 }
+
+store.dispatch(actionCreators.fetchUsers());
 
 export default store;

@@ -4,8 +4,7 @@ function users(state = {isFetching: false, users: []}, action) {
             console.log('fetching users')
             return {...state, isFetching: true};
         case 'RECEIVE_USERS' :
-            console.log('received users', JSON.stringify(action.users))
-            return {isFetching: false, users: action.users.users};
+            return {...state, isFetching: false, users: action.users.users};
         case 'ADD_USER' :
             console.log('adding user', action.user)
             return state;

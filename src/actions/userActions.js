@@ -51,15 +51,18 @@ export const receiveUsers = json => {
     }
 }
 
-export const fetchUsers = () => {
+export const fetchUsers = (init) => {
     return dispatch => {
         dispatch(requestUsers())
-        usersApi.retrieveUsers().then(response => {
+        return usersApi.retrieveUsers().then(response => {
             console.log('GET Result: ' + JSON.stringify(response));
             dispatch(receiveUsers(response))
+            if (init && response.users.length) {
+                dispatch(setCurrentUser(response.users[0]))
+            }
         }).catch(error => {
             console.log('HTTP GET failed: ' + JSON.stringify(error));
-            throw new Error(error);
+            return Promise.reject(error)
         });
     }
 

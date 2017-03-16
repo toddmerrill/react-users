@@ -67,19 +67,6 @@ function UserList(props) {
     );
 }
 
-function retrieveUsersState(component) {
-    usersApi.retrieveUsers(function success(response) {
-        console.log('GET Result: ' + JSON.stringify(response));
-        this.setState({
-            users: response.users,
-            currentUser: (response.users && response.users.length > 0)
-                            ? response.users[0] : null
-        })
-    }.bind(component), function error(response) {
-        console.log('HTTP GET failed: ' + JSON.stringify(response));
-    }.bind(component));
-}
-
 function saveUser(component, user) {
     usersApi.saveUser(function(response) {
         if (!response.userId) {

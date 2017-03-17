@@ -15,7 +15,7 @@ function UserForm(props) {
           <h2>Personal Information</h2>
           <form className="form-horizontal">
               <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
-                  fieldName="firstName" fieldLabel="First Name" autoFocus="true" tabIndex="1"/>
+                  fieldName="firstName" fieldLabel="First Name" focus={true} tabIndex="1"/>
               <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
                   fieldName="lastName" fieldLabel="Last Name" tabIndex="2"/>
               <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
@@ -32,8 +32,10 @@ function UserFormInput(props) {
       <div className="form-group">
           <label className="controlLabel" class="control-label" htmlFor={'input'+props.fieldName}>{props.fieldLabel}</label>
           <div className="controls">
-              <input name={props.fieldName} type="text" className="form-control" id={'input'+props.fieldName} placeholder={props.fieldLabel}
-                     tabIndex={props.tabIndex} value={props.user[props.fieldName]} onChange={onChange} onBlur={onBlur}/>
+              <input name={props.fieldName} type="text" className="form-control"
+                     id={'input'+props.fieldName} placeholder={props.fieldLabel}
+                     tabIndex={props.tabIndex} autoFocus={props.focus}
+                     value={props.user[props.fieldName]} onChange={onChange} onBlur={onBlur}/>
           </div>
       </div>
   );

@@ -21,7 +21,16 @@ function mapDispatchToProps(dispatch) {
         receiveUsers: json => dispatch(actionCreators.receiveUsers(json)),
         requestPersistUser: () => dispatch(actionCreators.requestPersistUser()),
         persistUser: user => dispatch(actionCreators.persistUser(user)),
-        userPersisted: json => dispatch(actionCreators.userPersisted(json))
+        userPersisted: json => dispatch(actionCreators.userPersisted(json)),
+        addUser: user => {
+            dispatch(actionCreators.addUser(user))
+            // dispatch(actionCreators.persistUser(user))
+            dispatch(actionCreators.setCurrentUser(user))
+        },
+        deleteUser: user => {
+            console.log('dispatching delete user', user)
+            dispatch(actionCreators.deleteUser(user))
+        }
     }
 }
 

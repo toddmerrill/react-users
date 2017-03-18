@@ -1,4 +1,5 @@
 const usersApi = require('users-api');
+const util = require('../user-util');
 
 export const setCurrentUser = user => {
     return {
@@ -11,7 +12,7 @@ export const setCurrentUser = user => {
 export const addUser = user => {
     return {
         type: 'ADD_USER',
-        user
+        user: util.newUser()
     }
 }
 
@@ -50,10 +51,14 @@ export const persistUser = user => {
     }
 }
 
-export const deleteUser = userId => {
-    return {
-        type: 'DELETE_USER',
-        userId
+export const deleteUser = user => {
+    console.log('calling deleteUser', user)
+    return dispatch => {
+        usersApi.deleteUser(user).then((response) => {
+            console.log('successfully deleted user ' + user.userId + ': ' + JSON.stringify(response));
+        }).catch(error => {
+            console.log('HTTP DELETE failed: ' + JSON.stringify(error));
+        });
     }
 }
 

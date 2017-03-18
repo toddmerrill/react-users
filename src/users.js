@@ -1,6 +1,7 @@
 import React from 'react'
 const R = require('ramda')
 const usersApi = require('users-api');
+const util = require('./user-util')
 
 function User(props) {
   let rowClass= props.isCurrentUser ? "listrow current-row" : "listrow";
@@ -27,7 +28,6 @@ function UserForm(props) {
 
 function UserFormInput(props) {
   const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
-  const onBlur = e => {console.log('firing onBlur'); props.onBlur(props.user) }
   return (
       <div className="form-group">
           <label className="controlLabel" class="control-label" htmlFor={'input'+props.fieldName}>{props.fieldLabel}</label>
@@ -35,7 +35,7 @@ function UserFormInput(props) {
               <input name={props.fieldName} type="text" className="form-control"
                      id={'input'+props.fieldName} placeholder={props.fieldLabel}
                      tabIndex={props.tabIndex} autoFocus={props.focus}
-                     value={props.user[props.fieldName]} onChange={onChange} onBlur={onBlur}/>
+                     value={props.user[props.fieldName]} onChange={onChange} onBlur={props.onBlur(props.user)}/>
           </div>
       </div>
   );
@@ -46,12 +46,12 @@ function UserHeader(props) {
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
-            <a className="nohover" onClick={props.addUser}>
-                <span className="btn-circle btn-ok" />
-            </a>
-            <a className="nohover" onClick={props.removeUser}>
-                <span className="btn-circle btn-error" />
-            </a>
+                <a className="nohover" onClick={props.addUser}>
+                    <span className="btn-circle btn-ok" />
+                </a>
+                <a className="nohover" onClick={() => props.removeUser(props.currentUser)}>
+                    <span className="btn-circle btn-error" />
+                </a>
             </span>
         </div>
     );
@@ -67,39 +67,6 @@ function UserList(props) {
     );
 }
 
-function getUserId() {
-    return Math.random().toString(36).substr(2, 9);
-};
-
-function createUser(component) {
-    const newUser = { userId: getUserId(),
-            firstName: "First",
-            lastName: "Last",
-            age: 0
-        }
-    const userList = R.concat([newUser], component.state.users);
-    component.setState({
-        users: userList,
-        currentUser: newUser
-    });
-    saveUser(component, newUser);
-};
-
-function deleteCurrentUser(component) {
-    const user = component.state.currentUser;
-    usersApi.deleteUser(function(response) {
-        console.log('successfully deleted user ' + user.userId + ': ' + JSON.stringify(response));
-        const userList = R.without([user], this.state.users);
-        const currentUser = userList.length > 0 ? userList[0] : null;
-        this.setState({
-            users: userList,
-            currentUser: currentUser
-        });
-    }.bind(component), function(response) {
-        console.log('HTTP DELETE failed: ' + JSON.stringify(response));
-    }.bind(component), user);
-};
-
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -110,14 +77,13 @@ class Users extends React.Component {
     return (
         <div>
         <div className="leftList" class="col-md-4">
-            <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}/>
+            <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser} currentUser={this.props.currentUser}/>
             <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
         </div>
         <UserForm user={this.props.currentUser} onChange={this.props.updateUser} onBlur={this.props.persistUser}/>
     </div>
     );
   }
-
 }
 
 export default Users;

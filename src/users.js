@@ -35,7 +35,7 @@ function UserFormInput(props) {
               <input name={props.fieldName} type="text" className="form-control"
                      id={'input'+props.fieldName} placeholder={props.fieldLabel}
                      tabIndex={props.tabIndex} autoFocus={props.focus}
-                     value={props.user[props.fieldName]} onChange={onChange} onBlur={props.onBlur(props.user)}/>
+                     value={props.user[props.fieldName]} onChange={onChange} onBlur={() => props.onBlur(props.user)}/>
           </div>
       </div>
   );
@@ -59,6 +59,7 @@ function UserHeader(props) {
 
 function UserList(props) {
     const userList = props.users.map((user, index) => {
+        if (index === 0 && !props.currentUser['userId']) {props.userClick(user)}
         const isCurrentUser = user.userId === props.currentUser.userId || false
         return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>
     });
@@ -72,10 +73,9 @@ class Users extends React.Component {
     super(props);
     console.log("Initial props", this.props);
   }
-
   render() {
     return (
-        <div>
+    <div>
         <div className="leftList" class="col-md-4">
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser} currentUser={this.props.currentUser}/>
             <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>

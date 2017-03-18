@@ -51,11 +51,19 @@ export const persistUser = user => {
     }
 }
 
+export const userDeleted = (user) => {
+    return {
+        type: 'USER_DELETED',
+        user
+    }
+}
+
 export const deleteUser = user => {
     console.log('calling deleteUser', user)
     return dispatch => {
         usersApi.deleteUser(user).then((response) => {
             console.log('successfully deleted user ' + user.userId + ': ' + JSON.stringify(response));
+            dispatch(userDeleted(user))
         }).catch(error => {
             console.log('HTTP DELETE failed: ' + JSON.stringify(error));
         });

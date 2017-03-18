@@ -19,8 +19,8 @@ function users(state = {isFetching: false, users: []}, action) {
         case 'UPDATE_USER' :
             console.log('updating user', action.user)
             return {...state, users: state.users.map(user => user.userId === action.user.userId ? {...action.user} : user)};
-        case 'DELETE_USER' :
-            console.log('deleting user', action.user)
+        case 'USER_DELETED' :
+            console.log('state', state);
             return {...state, users: R.without([action.user],state.users)};
         default:
             return state;

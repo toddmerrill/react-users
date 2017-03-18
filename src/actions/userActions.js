@@ -12,7 +12,7 @@ export const setCurrentUser = user => {
 export const addUser = user => {
     return {
         type: 'ADD_USER',
-        user: util.newUser()
+        user
     }
 }
 

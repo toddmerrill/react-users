@@ -50,7 +50,7 @@ function UserHeader(props) {
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
-                <a className="nohover" onClick={props.addUser}>
+                <a className="nohover" onClick={() => props.addUser(util.newUser())}>
                     <span className="btn-circle btn-ok" />
                 </a>
                 <a className="nohover" onClick={deleteUser}>

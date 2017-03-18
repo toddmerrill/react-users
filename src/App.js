@@ -25,12 +25,11 @@ function mapDispatchToProps(dispatch) {
         addUser: user => {
             dispatch(actionCreators.addUser(user))
             dispatch(actionCreators.setCurrentUser(user))
-            // dispatch(actionCreators.persistUser(user))
         },
-        deleteUser: user => {
-            console.log('dispatching delete user', user)
+        deleteUser: (user, newCurrentUser) => {
+            console.log('dispatching delete user', user, newCurrentUser)
             dispatch(actionCreators.deleteUser(user))
-            dispatch(actionCreators.setCurrentUser(null))
+            dispatch(actionCreators.setCurrentUser(newCurrentUser))
         }
     }
 }

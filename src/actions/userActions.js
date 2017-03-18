@@ -76,10 +76,10 @@ export const requestUsers = () => {
     }
 }
 
-export const receiveUsers = json => {
+export const receiveUsers = users => {
     return {
         type: 'RECEIVE_USERS',
-        users: json
+        users
     }
 }
 
@@ -88,7 +88,7 @@ export const fetchUsers = init => {
         dispatch(requestUsers())
         return usersApi.retrieveUsers().then(response => {
             console.log('GET Result: ' + JSON.stringify(response));
-            dispatch(receiveUsers(response))
+            dispatch(receiveUsers(response.users))
             if (init && response.users.length) {
                 dispatch(setCurrentUser(response.users[0]))
             }

@@ -42,6 +42,10 @@ function UserFormInput(props) {
 }
 
 function UserHeader(props) {
+    const deleteUser = () => {
+        const newCurrentUser = props.users.length ? props.users[0] : null;
+        props.removeUser(props.currentUser, newCurrentUser);
+    }
     return (
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
@@ -49,7 +53,7 @@ function UserHeader(props) {
                 <a className="nohover" onClick={props.addUser}>
                     <span className="btn-circle btn-ok" />
                 </a>
-                <a className="nohover" onClick={() => props.removeUser(props.currentUser)}>
+                <a className="nohover" onClick={deleteUser}>
                     <span className="btn-circle btn-error" />
                 </a>
             </span>
@@ -59,7 +63,6 @@ function UserHeader(props) {
 
 function UserList(props) {
     const userList = props.users.map((user, index) => {
-        if (index === 0 && !props.currentUser['userId']) {props.userClick(user)}
         const isCurrentUser = user.userId === props.currentUser.userId || false
         return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>
     });
@@ -77,7 +80,8 @@ class Users extends React.Component {
     return (
     <div>
         <div className="leftList" class="col-md-4">
-            <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser} currentUser={this.props.currentUser}/>
+            <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}
+                currentUser={this.props.currentUser} users={this.props.users.users}/>
             <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
         </div>
         <UserForm user={this.props.currentUser} onChange={this.props.updateUser} onBlur={this.props.persistUser}/>

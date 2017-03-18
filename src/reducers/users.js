@@ -6,7 +6,7 @@ function users(state = {isFetching: false, users: []}, action) {
             console.log('fetching users')
             return {...state, isFetching: true};
         case 'RECEIVE_USERS' :
-            return {...state, isFetching: false, users: action.users.users};
+            return {...state, isFetching: false, users: action.users};
         case 'ADD_USER' :
             console.log('adding user', action.user)
             return {...state, users: state.users.concat(action.user)};

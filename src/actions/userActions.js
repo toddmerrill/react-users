@@ -1,5 +1,4 @@
 const usersApi = require('users-api');
-const util = require('../user-util');
 
 export const setCurrentUser = user => {
     return {

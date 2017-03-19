@@ -1,7 +1,7 @@
 import React from 'react'
 const R = require('ramda')
 const usersApi = require('users-api');
-const util = require('./user-util')
+const util = require('../util/user-util')
 
 function User(props) {
   let rowClass= props.isCurrentUser ? "listrow current-row" : "listrow";

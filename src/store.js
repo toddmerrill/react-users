@@ -3,6 +3,7 @@ import createLogger from 'redux-logger'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
+import { createHashHistory } from 'history';
 
 import rootReducer from './reducers/index';
 import * as actionCreators from './actions/userActions';

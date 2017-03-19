@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from './actions/userActions';
-import Users from './components/users';
+import Main from './components/Main';
 
 function mapStateToProps(state) {
     return {
@@ -35,6 +35,6 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(Users);
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;

@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 // import Users from './users.js';
 import App from './App.js'
+import Users from './components/Users'
 
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import './style/users.css';
@@ -15,7 +16,7 @@ const router = (
 <Provider store={store}>
     <Router history={history}>
         <Route path="/" component={App}>
-            <IndexRoute component={App}></IndexRoute>
+            <IndexRoute component={Users}></IndexRoute>
         </Route>
     </Router>
 </Provider>)

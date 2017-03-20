@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="listHeader"
+>
+  <h2
+    className="oneLine"
+  >
+    Users
+  </h2>
+  <span
+    className="rightButtons"
+  >
+    <a
+      className="nohover"
+      onClick={[Function]}
+    >
+      <span
+        className="btn-circle btn-ok"
+      />
+    </a>
+    <a
+      className="nohover"
+      onClick={[Function]}
+    >
+      <span
+        className="btn-circle btn-error"
+      />
+    </a>
+  </span>
+</div>
+`;

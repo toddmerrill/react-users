@@ -5,7 +5,14 @@
   "scripts": {
     "start": "webpack-dev-server --progress --colors --content-base build/",
     "build:bundle": "webpack",
-    "build": "npm run build:bundle"
+    "build": "npm run build:bundle",
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "preset-latest"
+    ]
   },
   "repository": {
     "type": "git",
@@ -45,10 +52,17 @@
     "css-loader": "^0.26.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "1.6.1",
+    "jest": "^19.0.2",
     "mocha": "^3.0.2",
+    "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/test/**/*.js"
+    ]
   }
 }

@@ -9,9 +9,8 @@ var loaders = [
     "loader": "babel",
     "query": {
       "presets": [
-        "es2015",
-        "react",
-        "stage-0"
+        "preset-latest",
+        "react"
       ],
       "plugins": []
     }

@@ -41,7 +41,7 @@ function UserFormInput(props) {
   );
 }
 
-function UserHeader(props) {
+export const UserHeader = props => {
     const deleteUser = () => {
         const newCurrentUser = props.users.length ? props.users[0] : null;
         props.removeUser(props.currentUser, newCurrentUser);

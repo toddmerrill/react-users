@@ -1,6 +1,6 @@
-const R = require('ramda')
+import R from 'ramda'
 
-function currentUser(state = [], action) {
+const currentUser = (state = [], action) => {
     switch(action.type) {
         case 'SET_CURRENT_USER' :
             console.log('setting current user to', action.user, {...action.user})

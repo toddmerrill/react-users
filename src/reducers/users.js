@@ -1,6 +1,6 @@
-const R = require('ramda')
+import R from 'ramda'
 
-function users(state = {isFetching: false, users: []}, action) {
+const users = (state = {isFetching: false, users: []}, action) => {
     switch(action.type) {
         case 'FETCH_USERS' :
             console.log('fetching users')

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import * as actionCreators from './actions/userActions';
 import Main from './components/Main';
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         users: {...state.users},
         currentUser: state.currentUser
     }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return {
         updateUser: user => {
             dispatch(actionCreators.updateUser(user))

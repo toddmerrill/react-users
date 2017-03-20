@@ -11,7 +11,8 @@
   "babel": {
     "presets": [
       "react",
-      "preset-latest"
+      "es2015",
+      "stage-0"
     ]
   },
   "repository": {

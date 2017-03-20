@@ -3,14 +3,14 @@ const R = require('ramda')
 const usersApi = require('users-api');
 const util = require('../util/user-util')
 
-function User(props) {
+export const User = props => {
   let rowClass= props.isCurrentUser ? "listrow current-row" : "listrow";
   return (
       <div className={rowClass} onClick={() => props.onClick(props.user)}><h4>{props.user.firstName} {props.user.lastName}</h4></div>
   );
 }
 
-function UserForm(props) {
+export const UserForm = props => {
   return (
       <div className="rightList" class="col-md-6 content">
           <h2>Personal Information</h2>
@@ -26,7 +26,7 @@ function UserForm(props) {
   );
 }
 
-function UserFormInput(props) {
+export const UserFormInput = props => {
   const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
   return (
       <div className="form-group">
@@ -61,7 +61,7 @@ export const UserHeader = props => {
     );
 }
 
-function UserList(props) {
+export const UserList = props => {
     const userList = props.users.map((user, index) => {
         const isCurrentUser = user.userId === props.currentUser.userId || false
         return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>

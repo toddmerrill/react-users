@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserList renders correctly 1`] = `
+<div>
+  <div
+    class="col-md-4"
+    className="leftList"
+  >
+    <div
+      className="listHeader"
+    >
+      <h2
+        className="oneLine"
+      >
+        Users
+      </h2>
+      <span
+        className="rightButtons"
+      >
+        <a
+          className="nohover"
+          onClick={[Function]}
+        >
+          <span
+            className="btn-circle btn-ok"
+          />
+        </a>
+        <a
+          className="nohover"
+          onClick={[Function]}
+        >
+          <span
+            className="btn-circle btn-error"
+          />
+        </a>
+      </span>
+    </div>
+    <div
+      className="listItems"
+    >
+      <div
+        className="listrow current-row"
+        onClick={[Function]}
+      >
+        <h4>
+           
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div
+    class="col-md-6 content"
+    className="rightList"
+  >
+    <h2>
+      Personal Information
+    </h2>
+    <form
+      className="form-horizontal"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          class="control-label"
+          className="controlLabel"
+          htmlFor="inputfirstName"
+        >
+          First Name
+        </label>
+        <div
+          className="controls"
+        >
+          <input
+            autoFocus={true}
+            className="form-control"
+            id="inputfirstName"
+            name="firstName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="First Name"
+            tabIndex="1"
+            type="text"
+            value={undefined}
+          />
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          class="control-label"
+          className="controlLabel"
+          htmlFor="inputlastName"
+        >
+          Last Name
+        </label>
+        <div
+          className="controls"
+        >
+          <input
+            autoFocus={undefined}
+            className="form-control"
+            id="inputlastName"
+            name="lastName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Last Name"
+            tabIndex="2"
+            type="text"
+            value={undefined}
+          />
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          class="control-label"
+          className="controlLabel"
+          htmlFor="inputage"
+        >
+          Age
+        </label>
+        <div
+          className="controls"
+        >
+          <input
+            autoFocus={undefined}
+            className="form-control"
+            id="inputage"
+            name="age"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Age"
+            tabIndex="3"
+            type="text"
+            value={undefined}
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

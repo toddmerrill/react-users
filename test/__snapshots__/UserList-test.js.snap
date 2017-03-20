@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserList renders correctly 1`] = `
+<div
+  className="listItems"
+>
+  <div
+    className="listrow current-row"
+    onClick={[Function]}
+  >
+    <h4>
+       
+    </h4>
+  </div>
+</div>
+`;

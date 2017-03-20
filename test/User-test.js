@@ -1,10 +1,10 @@
 import React from 'react';
-import {UserHeader} from '../src/components/Users.js';
+import { User } from '../src/components/Users.js';
 import renderer from 'react-test-renderer';
 
-it('renders correctly', () => {
+it('User renders correctly', () => {
     const tree = renderer.create(
-        <UserHeader />
+        <User user={{firstName: 'bla', lastName: 'bloo'}} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
 });

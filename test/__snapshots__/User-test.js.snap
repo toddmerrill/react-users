@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User renders correctly 1`] = `
+<div
+  className="listrow"
+  onClick={[Function]}
+>
+  <h4>
+    bla
+     
+    bloo
+  </h4>
+</div>
+`;

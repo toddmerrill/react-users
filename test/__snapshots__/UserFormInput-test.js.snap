@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserFormInput renders correctly 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    class="control-label"
+    className="controlLabel"
+    htmlFor="inputundefined"
+  />
+  <div
+    className="controls"
+  >
+    <input
+      autoFocus={undefined}
+      className="form-control"
+      id="inputundefined"
+      name={undefined}
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder={undefined}
+      tabIndex={undefined}
+      type="text"
+      value={undefined}
+    />
+  </div>
+</div>
+`;

@@ -2,13 +2,13 @@
 
 exports[`User renders correctly 1`] = `
 <div
-  className="listrow"
+  className="listrow current-row"
   onClick={[Function]}
 >
   <h4>
-    bla
+    test-first
      
-    bloo
+    test-last
   </h4>
 </div>
 `;

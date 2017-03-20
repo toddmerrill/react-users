@@ -12,7 +12,7 @@ const loggerMiddleware = createLogger();
 
 const defaultState = {
     users: {isFetching: false, users: []},
-    currentUser: {firstName:'', lastName:'',age: 0}
+    currentUser: {firstName:'', lastName:'',age: "0"}
 };
 
 const enhancers = compose(

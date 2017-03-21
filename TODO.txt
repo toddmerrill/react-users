@@ -6,3 +6,4 @@
 - Unit testing coverage
 - Documentation
 - add linting
+- copy paste history atom

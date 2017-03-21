@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 // import Users from './users.js';
 import App from './App.js'
-import Users from './components/Users'
+import Main from './components/Main'
 
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import './style/users.css';
@@ -15,8 +15,8 @@ import store, { history } from './store';
 const router = (
 <Provider store={store}>
     <Router history={history}>
-        <Route path="/" component={App}>
-            <IndexRoute component={Users}></IndexRoute>
+        <Route path="/" component={Main}>
+            <IndexRoute component={App}/>
         </Route>
     </Router>
 </Provider>)

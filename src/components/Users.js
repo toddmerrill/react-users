@@ -118,7 +118,7 @@ UserList.propTypes = {
 class Users extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Initial props", this.props);
+    console.log("Initial props", props);
   }
   render() {
     return (
@@ -135,7 +135,7 @@ class Users extends React.Component {
 }
 
 Users.propTypes = {
-    addUser: PropTypes.func,
+    addUser: PropTypes.func.isRequired,
     deleteUser: PropTypes.func,
     setCurrentUser: PropTypes.func,
     updateUser: PropTypes.func,

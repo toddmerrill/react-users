@@ -1,6 +1,5 @@
 - fix routing from file perspective
 - deploy
-- refactor to action constants
 - add flowtype
 - refactor react components -> files
 - Remove Bootstrap

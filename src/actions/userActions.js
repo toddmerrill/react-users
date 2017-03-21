@@ -1,8 +1,9 @@
 const usersApi = require('users-api');
+import * as type from './types'
 
 export const setCurrentUser = user => {
     return {
-        type: 'SET_CURRENT_USER',
+        type: type.SET_CURRENT_USER,
         user
     }
 }
@@ -10,27 +11,27 @@ export const setCurrentUser = user => {
 // add new user
 export const addUser = user => {
     return {
-        type: 'ADD_USER',
+        type: type.ADD_USER,
         user
     }
 }
 
 export const updateUser = user => {
     return {
-        type: 'UPDATE_USER',
+        type: type.UPDATE_USER,
         user
     }
 }
 
 export const requestPersistUser = () => {
     return {
-        type: 'PERSIST_USER'
+        type: type.PERSIST_USER
     }
 }
 
 export const userPersisted = (json) => {
     return {
-        type: 'USER_PERSISTED',
+        type: type.USER_PERSISTED,
         user: json
     }
 }
@@ -52,7 +53,7 @@ export const persistUser = user => {
 
 export const userDeleted = (user) => {
     return {
-        type: 'USER_DELETED',
+        type: type.USER_DELETED,
         user
     }
 }
@@ -71,13 +72,13 @@ export const deleteUser = user => {
 
 export const requestUsers = () => {
     return {
-        type: 'FETCH_USERS'
+        type: type.FETCH_USERS
     }
 }
 
 export const receiveUsers = users => {
     return {
-        type: 'RECEIVE_USERS',
+        type: type.RECEIVE_USERS,
         users
     }
 }

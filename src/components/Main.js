@@ -4,7 +4,7 @@ const Main = React.createClass({
     render() {
         return (
             <div>
-                <div>BLAAAAAAAAAAAAAAAAAAAAA</div>
+                // header and footer will go in this component
                 {this.props.children}
             </div>
         )

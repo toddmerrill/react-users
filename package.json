@@ -42,6 +42,7 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
     "redux-thunk": "^2.2.0",
+    "typescript": "^2.2.1",
     "users-api": "1.1.0"
   },
   "devDependencies": {

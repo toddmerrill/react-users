@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-// import Users from './users.js';
+
 import App from './App.js'
 import Main from './components/Main'
 

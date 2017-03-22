@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "React.js implementation of a simple master/detail form",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --content-base build/",
+    "clean": "rm -rf build; rm -rf tsBuild;",
+    "prestart": "npm run clean",
+    "start": "npm run ts; webpack-dev-server --progress --colors --content-base build/",
     "build:bundle": "webpack",
-    "build": "npm run build:bundle",
-    "test": "jest"
+    "prebuild": "npm run clean",
+    "build": "npm run ts; npm run build:bundle",
+    "ts": "tsc; cp -rf src/style tsBuild/src; cp src/index.html tsBuild/src",
+    "tsonly": "npm run clean; npm run ts",
+    "test": "jest",
+    "tsc": "tsc"
   },
   "babel": {
     "presets": [
@@ -42,7 +48,6 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
     "redux-thunk": "^2.2.0",
-    "typescript": "^2.2.1",
     "users-api": "1.1.0"
   },
   "devDependencies": {
@@ -58,6 +63,7 @@
     "mocha": "^3.0.2",
     "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.1",
+    "typescript": "^2.2.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"

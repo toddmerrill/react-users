@@ -6,4 +6,6 @@
 - Unit testing coverage
 - Documentation
 - add linting
-- copy paste history atom
+
+
+-package json has linux-only commands now - remove

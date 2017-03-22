@@ -4,23 +4,23 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var rules = [
   {
-    "test": /\.js?$/,
-    "exclude": /node_modules/,
-    "loader": "babel-loader",
-    "query": {
-      "presets": [
-        "react",
-        "latest",
-        "stage-3"
+    test: /\.js?$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        'react',
+        'latest',
+        'stage-3'
       ],
-      "plugins": []
+      plugins: []
     }
 },
 {
   test: /\.css$/,
   use: [
-    "style-loader",
-    "css-loader"
+    'style-loader',
+    'css-loader'
   ]
 },
 {

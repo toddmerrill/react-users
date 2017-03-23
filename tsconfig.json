@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
+    "module": "CommonJS",
+    "target": "esNext",
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "tsBuild",
+    "build",
+    "webpack.config.js"
+  ]
+}

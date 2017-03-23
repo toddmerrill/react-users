@@ -9,6 +9,7 @@
 - immutability / functional features
 - add custom console logger
 - add promises error handling action
+- replace console with logging
 
 
 

@@ -81,7 +81,7 @@ const rules = [
 
 module.exports = {
     devtool: 'eval-source-map',
-    entry: path.resolve('src', 'usersapp.ts'),
+    entry: path.resolve('src', 'usersapp.js'),
     output: {
         path: path.resolve('build'),
         filename: '[name].js',

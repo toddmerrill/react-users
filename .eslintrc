@@ -2,5 +2,15 @@
     parser: "babel-eslint",
     'rules': {
 
-    }
+    },
+    'extends': ['airbnb-base'],
+  'globals': {
+    'window': true,
+    'document': true
+  },
+  plugins: [ 'react' ],
+  'ecmaFeatures': {
+    'jsx': true,
+  }
+
 }

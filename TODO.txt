@@ -5,11 +5,7 @@
 - Remove Bootstrap
 - Unit testing coverage
 - Documentation
-- add linting
 - immutability / functional features
 - add promises error handling action
 - replace console with logging
-
-
-
--package json has linux-only commands now - remove
+- package.json has linux-only commands now - remove

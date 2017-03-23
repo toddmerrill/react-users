@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "allowJs": true,
+    "target": "esNext",
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "webpack.config.js"
+  ]
+}

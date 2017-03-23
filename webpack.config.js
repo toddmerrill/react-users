@@ -3,9 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 process.noDeprecation = true;
 
-const rules = [{
-        test: /\.js?$/,
-        exclude: /node_modules/,
+const rules = [
+  {
+    test: /\.ts(x?)$/,
+    loader: 'awesome-typescript-loader',
+  },
+  {
+  test: /\.js?$/,
+  exclude: /node_modules/,
         use: [{
             loader: 'babel-loader',
             options: {
@@ -89,7 +94,10 @@ module.exports = {
             filename: 'index.html'
         })
     ],
-    module: {
-        rules: rules
-    }
+  module: {
+    rules,
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
 };

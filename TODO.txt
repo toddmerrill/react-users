@@ -6,6 +6,9 @@
 - Unit testing coverage
 - Documentation
 - add linting
+- immutability / functional features
+- add custom console logger
+
 
 
 -package json has linux-only commands now - remove

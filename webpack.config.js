@@ -5,10 +5,6 @@ process.noDeprecation = true;
 
 const rules = [
   {
-    test: /\.ts(x?)$/,
-    loader: 'awesome-typescript-loader',
-  },
-  {
     test: /\.js?$/,
     exclude: /node_modules/,
     use: [{
@@ -98,6 +94,6 @@ module.exports = {
     rules,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
 };

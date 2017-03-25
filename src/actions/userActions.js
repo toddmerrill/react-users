@@ -1,4 +1,4 @@
-import * as type from './types.ts';
+import * as type from './types';
 
 const usersApi = require('users-api');
 

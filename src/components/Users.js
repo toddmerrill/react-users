@@ -6,20 +6,23 @@ const util = require('../util/user-util')
 export const User = props => {
   let rowClass= props.isCurrentUser ? "listrow current-row" : "listrow";
   return (
-      <div className={rowClass} onClick={() => props.onClick(props.user)}><h4>{props.user.firstName} {props.user.lastName}</h4></div>
+      <div className={rowClass} onClick={() => props.onClick(props.user)}>
+          {props.user.firstName} {props.user.lastName}
+      </div>
   );
 }
 
 export const UserForm = props => {
   return (
-      <div className="rightList" class="col-md-6 content">
+      // class="col-md-6 content"
+      <div className="rightList"class="col-md-6 content">
           <h2>Personal Information</h2>
           <form className="form-horizontal">
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange} userClick={props.userClick}
                   fieldName="firstName" fieldLabel="First Name" focus={true} tabIndex="1"/>
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange} userClick={props.userClick}
                   fieldName="lastName" fieldLabel="Last Name" tabIndex="2"/>
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange} userClick={props.userClick}
                   fieldName="age" fieldLabel="Age" tabIndex="3"/>
           </form>
       </div>
@@ -28,11 +31,12 @@ export const UserForm = props => {
 
 export const UserFormInput = props => {
   const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
+  let inputClass= props.isUserClick ? "form-control current-inputField" : "form-control";
   return (
       <div className="form-group">
           <label className="controlLabel" class="control-label" htmlFor={'input'+props.fieldName}>{props.fieldLabel}</label>
           <div className="controls">
-              <input name={props.fieldName} type="text" className="form-control"
+              <input name={props.fieldName} type="text" className={inputClass}
                      id={'input'+props.fieldName} placeholder={props.fieldLabel}
                      tabIndex={props.tabIndex} autoFocus={props.focus}
                      value={props.user[props.fieldName]} onChange={onChange} onBlur={() => props.onBlur(props.user)}/>
@@ -50,12 +54,8 @@ export const UserHeader = props => {
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
-                <a className="nohover" onClick={() => props.addUser(util.newUser())}>
-                    <span className="btn-circle btn-ok" />
-                </a>
-                <a className="nohover" onClick={deleteUser}>
-                    <span className="btn-circle btn-error" />
-                </a>
+                <a className="nohover addButton" onClick={() => props.addUser(util.newUser())}>Add User</a>
+                <a className="nohover deleteButton" onClick={deleteUser}>Delete User</a>
             </span>
         </div>
     );
@@ -79,12 +79,13 @@ class Users extends React.Component {
   render() {
     return (
     <div>
+        <h1>Page Title</h1>
         <div className="leftList" class="col-md-4">
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}
                 currentUser={this.props.currentUser} users={this.props.users.users}/>
             <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
         </div>
-        <UserForm user={this.props.currentUser} onChange={this.props.updateUser} onBlur={this.props.persistUser}/>
+        <UserForm user={this.props.currentUser} onChange={this.props.updateUser} onBlur={this.props.persistUser} userClick={this.props.setCurrentInputField}/>
     </div>
     );
   }

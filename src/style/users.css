@@ -1,25 +1,83 @@
+.text {
+    color: #333333;
+    /*font-family: "Helvetica Neue", Arial, sans-serif;*/
+    font-family: Tahoma, Geneva, sans-serif;
+    /*background-color: #333333; goes well with gainsboro*/
+    /*background-color: dimgray;*/
+    background-color: #eee;
+}
+
 .leftList {
-    float:left;
-    width: 49%;
+    width: 47%;
     min-width: 300px;
     overflow: hidden;
     padding: 10px;
+    margin-left: 10px;
+    color: #333333;
+    float:left;
+    border: 1px solid #262626;
+    border-radius: 3px;
+    /*background-color: gainsboro;*/
+    background-color: #eee;
 }
 
 .rightList {
+    color: #333333;
     float:left;
-    width: 49%;
+    width: 47%;
     min-width: 300px;
     overflow: hidden;
-    padding: 20px;
+    padding: 10px 15px 15px 15px;
+    border: 1px solid #262626;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: beige;
+}
+
+.rightList h2 {
+    margin-top: 0%;
+}
+
+.formInputField {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color cubic-bezier(.68,-0.55,.27,1.55) .15s, box-shadow ease-in-out .15s;
+}
+
+.current-inputField {
+    border: 1px solid lightblue;
 }
 
 .listrow {
     padding: 5px;
     border: 1px solid #6af;
     border-left-width: 5px;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
     cursor: pointer;
+    font-size: medium;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -webikt-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    /*background-color: white;*/
 }
 
 .listrow:hover {
@@ -44,28 +102,47 @@
     padding: 15px;
 }
 
-.righttheader {
-    float:right;
-}
-
 h2.oneLine {
     display: inline;
 }
 
 .rightButtons {
     float: right;
-    padding-right: 30px;
+    padding-right: 20px;
+}
+
+.addButton {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('../images/buttonaddhover.png') bottom;
+    text-indent: -99999px;
+    margin-right: 5px;
+}
+.addButton:hover {
+    background-position: 0 0;
+}
+
+.deleteButton {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('../images/buttondeletehover.png') bottom;
+    text-indent: -99999px;
+}
+.deleteButton:hover {
+    background-position: 0 0;
 }
 
 .btn-circle {
     display:inline-block;
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     border: 2px solid white;
-    text-align: center;
-    font-size: 45px;
+    /*text-align: center;*/
+    font-size: 55px;
     font-weight: bold;
     line-height: 39px;
     margin-left: 10px;
@@ -79,6 +156,7 @@ h2.oneLine {
 
 .btn-ok::before {
     content: "+";
+    padding:  9px 0 0 5px;
 }
 
 .btn-circle.btn-error {
@@ -89,6 +167,7 @@ h2.oneLine {
 
 .btn-error::before {
     content: "-";
+    padding:  9px 0 0 11px;
 }
 
 .btn-circle:hover {

@@ -17,6 +17,7 @@ function mapDispatchToProps(dispatch) {
             dispatch(actionCreators.setCurrentUser(user))
         },
         setCurrentUser: user => dispatch(actionCreators.setCurrentUser(user)),
+        // setCurrentInputField: () => dispatch(actionCreators.setCurrentUser(user)),
         fetchUsers: () => dispatch(actionCreators.fetchUsers()),
         receiveUsers: json => dispatch(actionCreators.receiveUsers(json)),
         requestPersistUser: () => dispatch(actionCreators.requestPersistUser()),

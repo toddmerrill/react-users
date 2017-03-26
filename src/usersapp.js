@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import App from './App.js'
 import Users from './components/Users'
 
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import './style/users.css';
 
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';

@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
 import renderer from 'react-test-renderer'
 import Users from '../src/components/Users.js'
 import mock from './user-mocks'
+import LOG from '../src/util/logger'
+
+jest.mock('../src/util/logger');
 
 it('Users renders correctly', () => {
     const tree = renderer.create(

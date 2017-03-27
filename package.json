@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --progress --colors --content-base build/",
     "build:bundle": "webpack",
     "prebuild": "npm run clean",
-    "build": "npm run build:bundle",
+    "build": "npm run test; npm run build:bundle",
     "ts": "tsc; cp -rf src/style tsBuild/src; cp src/index.html tsBuild/src",
     "tsonly": "npm run clean; npm run ts",
     "test": "jest",

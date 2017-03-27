@@ -1,7 +1,7 @@
-const f = x => x
+const f = x => x;
 
-const user = {userId: 'testId', firstName: 'test-first', lastName: 'test-last', age: '987'}
+const user = { userId: 'testId', firstName: 'test-first', lastName: 'test-last', age: '987' };
 
-const users = [user]
+const users = [user];
 
-export default {f, user, users}
+export default { f, user, users };

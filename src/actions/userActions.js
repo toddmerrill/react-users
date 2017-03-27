@@ -1,6 +1,6 @@
+import usersApi from 'users-api';
 import * as type from './types';
-
-const usersApi = require('users-api');
+import LOG from '../util/logger';
 
 export const setCurrentUser = user => ({
   type: type.SET_CURRENT_USER,
@@ -28,15 +28,15 @@ export const userPersisted = json => ({
 });
 
 export const persistUser = (user) => {
-  console.log('calling persistUser', user);
+  LOG.info(`calling persistUser ${JSON.stringify(user)}`);
   return (dispatch) => {
     if (!user.firstName && !user.lastName) { return; }
     dispatch(requestPersistUser());
     usersApi.saveUser(user).then((response) => {
-      console.log('saveUser response', response);
+      LOG.info(`saveUser response: ${JSON.stringify(response)}`);
       dispatch(userPersisted(response));
     }).catch((error) => {
-      console.log('HTTP POST failed:', JSON.stringify(error));
+      LOG.error(`HTTP POST failed: ${JSON.stringify(error)}`);
       return Promise.reject(error);
     });
   };
@@ -48,13 +48,13 @@ export const userDeleted = user => ({
 });
 
 export const deleteUser = (user) => {
-  console.log('calling deleteUser', user);
+  LOG.info(`calling deleteUser: ${JSON.stringify(user)}`);
   return (dispatch) => {
     usersApi.deleteUser(user).then((response) => {
-      console.log(`successfully deleted user ${user.userId}: ${JSON.stringify(response)}`);
+      LOG.info(`successfully deleted user ${user.userId}: ${JSON.stringify(response)}`);
       dispatch(userDeleted(user));
     }).catch((error) => {
-      console.log(`HTTP DELETE failed: ${JSON.stringify(error)}`);
+      LOG.error(`HTTP DELETE failed: ${JSON.stringify(error)}`);
     });
   };
 };
@@ -71,13 +71,13 @@ export const receiveUsers = users => ({
 export const fetchUsers = init => (dispatch) => {
   dispatch(requestUsers());
   return usersApi.retrieveUsers().then((response) => {
-    console.log(`GET Result: ${JSON.stringify(response)}`);
+    LOG.info(`GET Result: ${JSON.stringify(response)}`);
     dispatch(receiveUsers(response.users));
     if (init && response.users.length) {
       dispatch(setCurrentUser(response.users[0]));
     }
   }).catch((error) => {
-    console.log(`HTTP GET failed: ${JSON.stringify(error)}`);
+    LOG.error(`HTTP GET failed: ${JSON.stringify(error)}`);
     return Promise.reject(error);
   });
 };

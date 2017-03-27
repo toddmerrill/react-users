@@ -1,23 +1,24 @@
 import R from 'ramda';
+import LOG from '../util/logger';
 
 const users = (state = { isFetching: false, users: [] }, action) => {
   switch (action.type) {
     case 'FETCH_USERS' :
-      console.log('fetching users');
+      LOG.info('fetching users');
       return { ...state, isFetching: true };
     case 'RECEIVE_USERS' :
       return { ...state, isFetching: false, users: action.users };
     case 'ADD_USER' :
-      console.log('adding user', action.user);
+      LOG.info(`adding user: ${JSON.stringify(action.user)}`);
       return { ...state, users: state.users.concat(action.user) };
     case 'PERSIST_USER' :
-      console.log('persisting user to aws');
+      LOG.info('persisting user to aws');
       return state;
     case 'USER_PERSISTED' :
-      console.log('successfully persisted', action.user);
+      LOG.info(`successfully persisted: ${JSON.stringify(action.user)}`);
       return state;
     case 'UPDATE_USER' :
-      console.log('updating user', action.user);
+      LOG.info(`updating user: ${JSON.stringify(action.user)}`);
       return {
         ...state,
         users: state.users.map(
@@ -25,7 +26,7 @@ const users = (state = { isFetching: false, users: [] }, action) => {
         ),
       };
     case 'USER_DELETED' :
-      console.log('state', state);
+      LOG.info(`state: ${JSON.stringify(state)}`);
       return { ...state, users: R.without([action.user], state.users) };
     default:
       return state;

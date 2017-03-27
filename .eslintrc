@@ -1,7 +1,7 @@
 {
     parser: "babel-eslint",
     'rules': {
-        'no-console': [0]
+        // currently using airbnb default rules
     },
     'extends': ['airbnb-base'],
   'globals': {

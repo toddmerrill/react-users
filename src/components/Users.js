@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import util from '../util/user-util';
+import LOG from '../util/logger';
 
 const userType = PropTypes.shape(
   {
@@ -27,18 +28,18 @@ User.propTypes = {
 };
 
 export const UserForm = props => (
-      <div className="rightList">
-          <h2>Personal Information</h2>
-          <form className="form-horizontal">
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
-                  fieldName="firstName" fieldLabel="First Name" focus={true} tabIndex={1}/>
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
-                  fieldName="lastName" fieldLabel="Last Name" tabIndex={2}/>
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
-                  fieldName="age" fieldLabel="Age" tabIndex={3}/>
-          </form>
-      </div>
-  );
+  <div className="rightList">
+      <h2>Personal Information</h2>
+      <form className="form-horizontal">
+          <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+              fieldName="firstName" fieldLabel="First Name" focus={true} tabIndex={1}/>
+          <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+              fieldName="lastName" fieldLabel="Last Name" tabIndex={2}/>
+          <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+              fieldName="age" fieldLabel="Age" tabIndex={3}/>
+      </form>
+  </div>
+);
 
 UserForm.propTypes = {
   user: userType.isRequired,
@@ -77,11 +78,15 @@ export const UserHeader = (props) => {
     const newCurrentUser = props.users.length ? props.users[0] : null;
     props.removeUser(props.currentUser, newCurrentUser);
   };
+  const addUser = () => {
+    LOG.info('Adding new user');
+    props.addUser(util.newUser());
+  };
   return (
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
-                <a className="nohover" onClick={() => props.addUser(util.newUser())}>
+                <a className="nohover" onClick={() => addUser()}>
                     <span className="btn-circle btn-ok" />
                 </a>
                 <a className="nohover" onClick={deleteUser}>
@@ -119,14 +124,15 @@ UserList.propTypes = {
 class Users extends React.Component {
   constructor(props) {
     super(props);
-    console.log('Initial props', props);
+    LOG.info(`Initial props: ${JSON.stringify(props)}`);
   }
   render() {
     return (
     <div>
         <div className="leftList" >
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}
-                currentUser={this.props.currentUser} users={this.props.users.users}/>
+                currentUser={this.props.currentUser} users={this.props.users.users}
+                log={this.props.log} />
             <UserList users={this.props.users.users} currentUser={this.props.currentUser}
                     userClick={this.props.setCurrentUser}/>
         </div>

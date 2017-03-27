@@ -1,41 +1,35 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from './actions/userActions';
-import Main from './components/Main';
+import Users from './components/Users';
 
-function mapStateToProps(state) {
-    return {
-        users: {...state.users},
-        currentUser: state.currentUser
-    }
-}
+const mapStateToProps = state => ({
+  users: { ...state.users },
+  currentUser: state.currentUser,
+});
 
-function mapDispatchToProps(dispatch) {
-    return {
-        updateUser: user => {
-            dispatch(actionCreators.updateUser(user))
-            dispatch(actionCreators.setCurrentUser(user))
-        },
-        setCurrentUser: user => dispatch(actionCreators.setCurrentUser(user)),
-        // setCurrentInputField: () => dispatch(actionCreators.setCurrentUser(user)),
-        fetchUsers: () => dispatch(actionCreators.fetchUsers()),
-        receiveUsers: json => dispatch(actionCreators.receiveUsers(json)),
-        requestPersistUser: () => dispatch(actionCreators.requestPersistUser()),
-        persistUser: user => dispatch(actionCreators.persistUser(user)),
-        userPersisted: json => dispatch(actionCreators.userPersisted(json)),
-        addUser: user => {
-            console.log('adding',user)
-            dispatch(actionCreators.addUser(user))
-            dispatch(actionCreators.setCurrentUser(user))
-        },
-        deleteUser: (user, newCurrentUser) => {
-            console.log('dispatching delete user', user, newCurrentUser)
-            dispatch(actionCreators.deleteUser(user))
-            dispatch(actionCreators.setCurrentUser(newCurrentUser))
-        }
-    }
-}
+const mapDispatchToProps = dispatch => ({
+  updateUser: (user) => {
+    dispatch(actionCreators.updateUser(user));
+    dispatch(actionCreators.setCurrentUser(user));
+  },
+  setCurrentUser: user => dispatch(actionCreators.setCurrentUser(user)),
+  fetchUsers: () => dispatch(actionCreators.fetchUsers()),
+  receiveUsers: json => dispatch(actionCreators.receiveUsers(json)),
+  requestPersistUser: () => dispatch(actionCreators.requestPersistUser()),
+  persistUser: user => dispatch(actionCreators.persistUser(user)),
+  userPersisted: json => dispatch(actionCreators.userPersisted(json)),
+  addUser: (user) => {
+    console.log('adding', user);
+    dispatch(actionCreators.addUser(user));
+    dispatch(actionCreators.setCurrentUser(user));
+  },
+  deleteUser: (user, newCurrentUser) => {
+    console.log('dispatching delete user', user, newCurrentUser);
+    dispatch(actionCreators.deleteUser(user));
+    dispatch(actionCreators.setCurrentUser(newCurrentUser));
+  },
+});
 
-const App = connect(mapStateToProps, mapDispatchToProps)(Main);
+const App = connect(mapStateToProps, mapDispatchToProps)(Users);
 
 export default App;

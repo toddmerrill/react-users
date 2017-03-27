@@ -1,3 +1,8 @@
-const getUserId = () => Math.random().toString(36).substr(2, 9);
+const generateUserId = () => Math.random().toString(36).substr(2, 9);
 
-export const newUser = () => ({userId: getUserId(), firstName: "First", lastName: "Last", age: 0});
+const newUser = () => ({ userId: generateUserId(), firstName: 'First', lastName: 'Last', age: '0' });
+
+module.exports = {
+  newUser,
+  generateUserId,
+};

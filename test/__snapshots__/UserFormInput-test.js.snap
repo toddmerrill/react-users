@@ -5,21 +5,22 @@ exports[`UserFormInput renders correctly 1`] = `
   className="form-group"
 >
   <label
-    class="control-label"
     className="controlLabel"
-    htmlFor="inputundefined"
-  />
+    htmlFor="inputtestFieldName"
+  >
+    testFieldLabel
+  </label>
   <div
     className="controls"
   >
     <input
       autoFocus={undefined}
       className="form-control"
-      id="inputundefined"
-      name={undefined}
+      id="inputtestFieldName"
+      name="testFieldName"
       onBlur={[Function]}
       onChange={[Function]}
-      placeholder={undefined}
+      placeholder="testFieldLabel"
       tabIndex={undefined}
       type="text"
       value={undefined}

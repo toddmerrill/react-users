@@ -1,24 +1,24 @@
+import { render } from 'react-dom';
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import {render} from 'react-dom';
-// import Users from './users.js';
-import App from './App.js'
-import Users from './components/Users'
 
-// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+/* eslint-enable no-unused-vars */
 import './style/users.css';
+import App from './App';
+import Main from './components/Main';
 
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-
-import {Provider } from 'react-redux';
 import store, { history } from './store';
 
 const router = (
 <Provider store={store}>
     <Router history={history}>
-        <Route path="/" component={App}>
-            <IndexRoute component={Users}></IndexRoute>
+        <Route path="/" component={Main}>
+            <IndexRoute component={App}/>
         </Route>
     </Router>
-</Provider>)
+</Provider>);
 
 render(router, document.querySelector('#app'));

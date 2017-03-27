@@ -1,56 +1,85 @@
-import React from 'react'
-const R = require('ramda')
-const usersApi = require('users-api');
-const util = require('../util/user-util')
+import React, { PropTypes } from 'react';
 
-export const User = props => {
-  let rowClass= props.isCurrentUser ? "listrow current-row" : "listrow";
+import util from '../util/user-util';
+
+const userType = PropTypes.shape(
+  {
+    userId: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    age: PropTypes.string,
+  },
+);
+
+export const User = (props) => {
+  const rowClass = props.isCurrentUser ? 'listrow current-row' : 'listrow';
   return (
       <div className={rowClass} onClick={() => props.onClick(props.user)}>
           {props.user.firstName} {props.user.lastName}
       </div>
   );
-}
+};
 
-export const UserForm = props => {
-  return (
-      // class="col-md-6 content"
-      <div className="rightList"class="col-md-6 content">
+User.propTypes = {
+  isCurrentUser: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  user: userType.isRequired,
+};
+
+export const UserForm = props => (
+      <div className="rightList">
           <h2>Personal Information</h2>
           <form className="form-horizontal">
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange} userClick={props.userClick}
-                  fieldName="firstName" fieldLabel="First Name" focus={true} tabIndex="1"/>
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange} userClick={props.userClick}
-                  fieldName="lastName" fieldLabel="Last Name" tabIndex="2"/>
-              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange} userClick={props.userClick}
-                  fieldName="age" fieldLabel="Age" tabIndex="3"/>
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+                  fieldName="firstName" fieldLabel="First Name" focus={true} tabIndex={1}/>
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+                  fieldName="lastName" fieldLabel="Last Name" tabIndex={2}/>
+              <UserFormInput user={props.user} onBlur={props.onBlur} onChange={props.onChange}
+                  fieldName="age" fieldLabel="Age" tabIndex={3}/>
           </form>
       </div>
   );
-}
 
-export const UserFormInput = props => {
-  const onChange = e => props.onChange({...props.user, [e.target.name]: e.target.value});
-  let inputClass= props.isUserClick ? "form-control current-inputField" : "form-control";
+UserForm.propTypes = {
+  user: userType.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export const UserFormInput = (props) => {
+  const onChange = e => props.onChange({ ...props.user, [e.target.name]: e.target.value });
+  const inputClass = props.isUserClick ? 'form-control current-inputField' : 'form-control';
+
   return (
       <div className="form-group">
-          <label className="controlLabel" class="control-label" htmlFor={'input'+props.fieldName}>{props.fieldLabel}</label>
+          <label className="controlLabel" htmlFor={`input${props.fieldName}`}>{props.fieldLabel}</label>
           <div className="controls">
               <input name={props.fieldName} type="text" className={inputClass}
-                     id={'input'+props.fieldName} placeholder={props.fieldLabel}
+                     id={`input${props.fieldName}`} placeholder={props.fieldLabel}
                      tabIndex={props.tabIndex} autoFocus={props.focus}
-                     value={props.user[props.fieldName]} onChange={onChange} onBlur={() => props.onBlur(props.user)}/>
+                     value={props.user[props.fieldName]} onChange={onChange}
+                     onBlur={() => props.onBlur(props.user)}/>
           </div>
       </div>
   );
-}
+};
 
-export const UserHeader = props => {
-    const deleteUser = () => {
-        const newCurrentUser = props.users.length ? props.users[0] : null;
-        props.removeUser(props.currentUser, newCurrentUser);
-    }
-    return (
+UserFormInput.propTypes = {
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  user: userType.isRequired,
+  fieldName: PropTypes.string.isRequired,
+  fieldLabel: PropTypes.string.isRequired,
+  tabIndex: PropTypes.number,
+  focus: PropTypes.bool,
+};
+
+export const UserHeader = (props) => {
+  const deleteUser = () => {
+    const newCurrentUser = props.users.length ? props.users[0] : null;
+    props.removeUser(props.currentUser, newCurrentUser);
+  };
+  return (
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
@@ -58,37 +87,67 @@ export const UserHeader = props => {
                 <a className="nohover deleteButton" onClick={deleteUser}>Delete User</a>
             </span>
         </div>
-    );
-}
+  );
+};
 
-export const UserList = props => {
-    const userList = props.users.map((user, index) => {
-        const isCurrentUser = user.userId === props.currentUser.userId || false
-        return <User key={user.userId} user={user} isCurrentUser={isCurrentUser} onClick={props.userClick}/>
-    });
-    return (
+UserHeader.propTypes = {
+  users: PropTypes.arrayOf(userType).isRequired,
+  currentUser: userType.isRequired,
+  removeUser: PropTypes.func.isRequired,
+  addUser: PropTypes.func.isRequired,
+};
+
+export const UserList = (props) => {
+  const userList = props.users.map((user) => {
+    const isCurrentUser = user.userId === props.currentUser.userId || false;
+    return (<User key={user.userId} user={user} isCurrentUser={isCurrentUser}
+            onClick={props.userClick}/>);
+  });
+  return (
         <div className="listItems">{userList}</div>
-    );
-}
+  );
+};
+
+UserList.propTypes = {
+  users: PropTypes.arrayOf(userType).isRequired,
+  currentUser: userType.isRequired,
+  userClick: PropTypes.func.isRequired,
+};
 
 class Users extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Initial props", this.props);
+    console.log('Initial props', props);
   }
   render() {
     return (
     <div>
         <h1>Page Title</h1>
-        <div className="leftList" class="col-md-4">
+        <div className="leftList">
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}
                 currentUser={this.props.currentUser} users={this.props.users.users}/>
-            <UserList users={this.props.users.users} currentUser={this.props.currentUser} userClick={this.props.setCurrentUser}/>
+            <UserList users={this.props.users.users} currentUser={this.props.currentUser}
+                    userClick={this.props.setCurrentUser}/>
         </div>
-        <UserForm user={this.props.currentUser} onChange={this.props.updateUser} onBlur={this.props.persistUser} userClick={this.props.setCurrentInputField}/>
+        <UserForm user={this.props.currentUser} onChange={this.props.updateUser}
+                onBlur={this.props.persistUser}/>
     </div>
     );
   }
 }
+
+Users.propTypes = {
+  addUser: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func,
+  setCurrentUser: PropTypes.func,
+  updateUser: PropTypes.func,
+  persistUser: PropTypes.func,
+  currentUser: userType,
+  users: PropTypes.shape(
+    {
+      users: PropTypes.arrayOf(userType).isRequired,
+    },
+    ),
+};
 
 export default Users;

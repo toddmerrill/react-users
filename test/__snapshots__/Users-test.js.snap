@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserList renders correctly 1`] = `
+exports[`Users renders correctly 1`] = `
 <div>
   <div
-    class="col-md-4"
     className="leftList"
   >
     <div
@@ -43,13 +42,14 @@ exports[`UserList renders correctly 1`] = `
         onClick={[Function]}
       >
         <h4>
+          test-first
            
+          test-last
         </h4>
       </div>
     </div>
   </div>
   <div
-    class="col-md-6 content"
     className="rightList"
   >
     <h2>
@@ -62,7 +62,6 @@ exports[`UserList renders correctly 1`] = `
         className="form-group"
       >
         <label
-          class="control-label"
           className="controlLabel"
           htmlFor="inputfirstName"
         >
@@ -79,9 +78,9 @@ exports[`UserList renders correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             placeholder="First Name"
-            tabIndex="1"
+            tabIndex={1}
             type="text"
-            value={undefined}
+            value="test-first"
           />
         </div>
       </div>
@@ -89,7 +88,6 @@ exports[`UserList renders correctly 1`] = `
         className="form-group"
       >
         <label
-          class="control-label"
           className="controlLabel"
           htmlFor="inputlastName"
         >
@@ -106,9 +104,9 @@ exports[`UserList renders correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             placeholder="Last Name"
-            tabIndex="2"
+            tabIndex={2}
             type="text"
-            value={undefined}
+            value="test-last"
           />
         </div>
       </div>
@@ -116,7 +114,6 @@ exports[`UserList renders correctly 1`] = `
         className="form-group"
       >
         <label
-          class="control-label"
           className="controlLabel"
           htmlFor="inputage"
         >
@@ -133,9 +130,9 @@ exports[`UserList renders correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             placeholder="Age"
-            tabIndex="3"
+            tabIndex={3}
             type="text"
-            value={undefined}
+            value="987"
           />
         </div>
       </div>

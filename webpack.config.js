@@ -1,49 +1,77 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var loaders = [
+process.noDeprecation = true;
+
+const rules = [
   {
-    "test": /\.js?$/,
-    "exclude": /node_modules/,
-    "loader": "babel",
-    "query": {
-      "presets": [
-        "react",
-        "latest",
-        "stage-3"
-      ],
-      "plugins": []
-    }
-},
-{
-  test: /\.css$/,
-  loader: "style-loader!css-loader"
-},
-{
-  test: /\.png$/,
-  loader: "url-loader?limit=100000"
-},
-{
-  test: /\.jpg$/,
-  loader: "file-loader"
-},
-{
-  test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-  loader: 'url?limit=10000&mimetype=application/font-woff'
-},
-{
-  test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-  loader: 'url?limit=10000&mimetype=application/octet-stream'
-},
-{
-  test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-  loader: 'file'
-},
-{
-  test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-  loader: 'url?limit=10000&mimetype=image/svg+xml'
-}
+    test: /\.js?$/,
+    exclude: /node_modules/,
+    use: [{
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          'react',
+          'latest',
+          'stage-3',
+        ],
+        plugins: [],
+      },
+    },
+    {
+      loader: 'eslint-loader',
+      options: {
+        plugins: ['react'],
+      },
+    },
+    ],
+  },
+  {
+    test: /\.css$/,
+    use: [
+      'style-loader',
+      'css-loader',
+    ],
+  },
+  {
+    test: /\.png$/,
+    loader: 'url-loader',
+    options: {
+      limit: '100000',
+    },
+  },
+  {
+    test: /\.jpg$/,
+    loader: 'file-loader',
+  },
+  {
+    test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'url-loader',
+    options: {
+      limit: '10000',
+      mimetype: 'application/font-woff',
+    },
+  },
+  {
+    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'url-loader',
+    options: {
+      limit: '10000',
+      mimetype: 'application/octet-stream',
+    },
+  },
+  {
+    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader',
+  },
+  {
+    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'url-loader',
+    options: {
+      limit: '10000',
+      mimetype: 'image/svg+xml',
+    },
+  },
 
 ];
 
@@ -53,16 +81,19 @@ module.exports = {
   output: {
     path: path.resolve('build'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('src', 'index.html'),
       inject: 'body',
-      filename: 'index.html'
-    })
+      filename: 'index.html',
+    }),
   ],
   module: {
-    loaders: loaders
-  }
+    rules,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };

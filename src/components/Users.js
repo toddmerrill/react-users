@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import util from '../util/user-util';
+import userImage from '../images/user.png';
 
 const userType = PropTypes.shape(
   {
@@ -15,6 +16,7 @@ export const User = (props) => {
   const rowClass = props.isCurrentUser ? 'listrow current-row' : 'listrow';
   return (
       <div className={rowClass} onClick={() => props.onClick(props.user)}>
+          <img src={userImage}/>
           {props.user.firstName} {props.user.lastName}
       </div>
   );
@@ -100,8 +102,10 @@ UserHeader.propTypes = {
 export const UserList = (props) => {
   const userList = props.users.map((user) => {
     const isCurrentUser = user.userId === props.currentUser.userId || false;
-    return (<User key={user.userId} user={user} isCurrentUser={isCurrentUser}
-            onClick={props.userClick}/>);
+    return (
+        <User key={user.userId} user={user} isCurrentUser={isCurrentUser}
+              onClick={props.userClick}/>
+    );
   });
   return (
         <div className="listItems">{userList}</div>
@@ -122,7 +126,10 @@ class Users extends React.Component {
   render() {
     return (
     <div>
-        <h1>Page Title</h1>
+        <h1 className="title">
+            <img src={userImage}/> react users
+        </h1>
+        <div className="container">
         <div className="leftList">
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}
                 currentUser={this.props.currentUser} users={this.props.users.users}/>
@@ -131,6 +138,7 @@ class Users extends React.Component {
         </div>
         <UserForm user={this.props.currentUser} onChange={this.props.updateUser}
                 onBlur={this.props.persistUser}/>
+        </div>
     </div>
     );
   }

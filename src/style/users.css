@@ -1,38 +1,62 @@
 .text {
     color: #333333;
     /*font-family: "Helvetica Neue", Arial, sans-serif;*/
-    font-family: Tahoma, Geneva, sans-serif;
+    /*font-family: Tahoma, Geneva, sans-serif;*/
     /*background-color: #333333; goes well with gainsboro*/
     /*background-color: dimgray;*/
+    font-family: 'Lato', sans-serif;
     background-color: #2D3E4E;
 }
 
+h1.title {
+    color: #FDFDFD;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+h1.title img {
+    height: 50px;
+    /*margin-right: 5px;*/
+}
+
+.container {
+    background-color: #FDFDFD;
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
 .leftList {
-    width: 47%;
+    width: 50%;
     min-width: 300px;
     overflow: hidden;
     padding: 10px;
-    margin-left: 10px;
     color: #333333;
     float:left;
-    border: 1px solid #262626;
-    border-radius: 3px;
+    /*border: 1px solid #262626;*/
+    border-radius: 10px;
     /*background-color: gainsboro;*/
-    background-color: #eee;
+    background-color: #FDFDFD;
 }
 
 .rightList {
     color: #333333;
     float:left;
-    width: 47%;
+    width: 50%;
     min-width: 300px;
     overflow: hidden;
     padding: 10px 15px 15px 15px;
-    border: 1px solid #262626;
-    border-radius: 3px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    background-color: beige;
+    /*border: 1px solid #262626;*/
+    border-radius: 10px;
+    background-color: #FDFDFD;
 }
 
 .rightList h2 {
@@ -63,9 +87,9 @@
 }
 
 .listrow {
-    padding: 5px;
-    border: 1px solid #6af;
-    border-left-width: 5px;
+    /*padding: 5px;*/
+    border-top: 1px solid #AFA4A4;
+    /*border-left-width: 5px;*/
     /*border-radius: 3px;*/
     cursor: pointer;
     font-size: medium;
@@ -76,8 +100,14 @@
     box-shadow: 1px 1px 2px 0 #CCCCCC;
     -webikt-border-radius: 3px;
     -moz-border-radius: 3px;
-    border-radius: 3px;
-    /*background-color: white;*/
+    border-radius: 20px;
+    margin-bottom: 10px;
+    background-color: #f4f4f4;
+}
+
+.listrow img {
+    height: 40px;
+    margin-right: 5px;
 }
 
 .listrow:hover {

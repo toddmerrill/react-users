@@ -1,18 +1,15 @@
 {
   "name": "react-user-client",
   "version": "1.0.0",
-  "description": "React.js implementation of a simple master/detail form",
+  "description": "React.js implementation of a master/detail users form",
   "scripts": {
-    "clean": "rm -rf build; rm -rf tsBuild;",
+    "clean": "rm -rf build",
     "prestart": "npm run clean",
     "start": "webpack-dev-server --progress --colors --content-base build/",
     "build:bundle": "webpack",
     "prebuild": "npm run clean",
     "build": "npm run test; npm run build:bundle",
-    "ts": "tsc; cp -rf src/style tsBuild/src; cp src/index.html tsBuild/src",
-    "tsonly": "npm run clean; npm run ts",
-    "test": "jest",
-    "tsc": "tsc"
+    "test": "jest"
   },
   "babel": {
     "presets": [
@@ -52,7 +49,6 @@
     "users-api": "1.1.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.1.2",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.2.0",
     "babel-loader": "^6.2.4",
@@ -72,7 +68,6 @@
     "mocha": "^3.0.2",
     "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.1",
-    "typescript": "^2.2.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.3.0",
     "webpack-dev-server": "^2.4.2"

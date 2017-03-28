@@ -1,6 +1,7 @@
 import { render } from 'react-dom';
 /* eslint-disable no-unused-vars */
 import React from 'react';
+
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';

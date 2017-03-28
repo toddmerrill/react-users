@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 import util from '../util/user-util';
 import LOG from '../util/logger';
+import userImage from '../images/user.png';
 
 const userType = PropTypes.shape(
   {
@@ -16,7 +17,8 @@ export const User = (props) => {
   const rowClass = props.isCurrentUser ? 'listrow current-row' : 'listrow';
   return (
       <div className={rowClass} onClick={() => props.onClick(props.user)}>
-          <h4>{props.user.firstName} {props.user.lastName}</h4>
+          <img src={userImage}/>
+          {props.user.firstName} {props.user.lastName}
       </div>
   );
 };
@@ -49,11 +51,13 @@ UserForm.propTypes = {
 
 export const UserFormInput = (props) => {
   const onChange = e => props.onChange({ ...props.user, [e.target.name]: e.target.value });
+  const inputClass = props.isUserClick ? 'form-control current-inputField' : 'form-control';
+
   return (
       <div className="form-group">
           <label className="controlLabel" htmlFor={`input${props.fieldName}`}>{props.fieldLabel}</label>
           <div className="controls">
-              <input name={props.fieldName} type="text" className="form-control"
+              <input name={props.fieldName} type="text" className={inputClass}
                      id={`input${props.fieldName}`} placeholder={props.fieldLabel}
                      tabIndex={props.tabIndex} autoFocus={props.focus}
                      value={props.user[props.fieldName]} onChange={onChange}
@@ -86,12 +90,8 @@ export const UserHeader = (props) => {
         <div className="listHeader">
             <h2 className="oneLine">Users</h2>
             <span className="rightButtons">
-                <a className="nohover" onClick={() => addUser()}>
-                    <span className="btn-circle btn-ok" />
-                </a>
-                <a className="nohover" onClick={deleteUser}>
-                    <span className="btn-circle btn-error" />
-                </a>
+                <a className="nohover addButton" onClick={() => addUser()}>Add User</a>
+                <a className="nohover deleteButton" onClick={deleteUser}>Delete User</a>
             </span>
         </div>
   );
@@ -129,7 +129,11 @@ class Users extends React.Component {
   render() {
     return (
     <div>
-        <div className="leftList" >
+        <h1 className="title">
+            <img src={userImage}/> react users
+        </h1>
+        <div className="container">
+        <div className="leftList">
             <UserHeader addUser={this.props.addUser} removeUser={this.props.deleteUser}
                 currentUser={this.props.currentUser} users={this.props.users.users}
                 log={this.props.log} />
@@ -138,6 +142,7 @@ class Users extends React.Component {
         </div>
         <UserForm user={this.props.currentUser} onChange={this.props.updateUser}
                 onBlur={this.props.persistUser}/>
+        </div>
     </div>
     );
   }

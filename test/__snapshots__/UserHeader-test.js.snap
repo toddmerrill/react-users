@@ -13,20 +13,16 @@ exports[`UserHeader renders correctly 1`] = `
     className="rightButtons"
   >
     <a
-      className="nohover"
+      className="nohover addButton"
       onClick={[Function]}
     >
-      <span
-        className="btn-circle btn-ok"
-      />
+      Add User
     </a>
     <a
-      className="nohover"
+      className="nohover deleteButton"
       onClick={[Function]}
     >
-      <span
-        className="btn-circle btn-error"
-      />
+      Delete User
     </a>
   </span>
 </div>

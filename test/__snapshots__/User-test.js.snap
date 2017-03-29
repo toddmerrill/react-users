@@ -5,10 +5,11 @@ exports[`User renders correctly 1`] = `
   className="listrow current-row"
   onClick={[Function]}
 >
-  <h4>
-    test-first
-     
-    test-last
-  </h4>
+  <img
+    src="test-file-stub"
+  />
+  test-first
+   
+  test-last
 </div>
 `;

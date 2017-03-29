@@ -2,6 +2,15 @@ import usersApi from 'users-api';
 import * as type from './types';
 import LOG from '../util/logger';
 
+export const errorAction = errorParam => ({
+  type: type.ADD_ERROR,
+  error: errorParam,
+});
+
+export const resetErrors = () => ({
+  type: type.RESET_ERRORS,
+});
+
 export const setCurrentUser = user => ({
   type: type.SET_CURRENT_USER,
   user,
@@ -37,7 +46,7 @@ export const persistUser = (user) => {
       dispatch(userPersisted(response));
     }).catch((error) => {
       LOG.error(`HTTP POST failed: ${JSON.stringify(error)}`);
-      return Promise.reject(error);
+      dispatch(errorAction(error));
     });
   };
 };
@@ -55,6 +64,7 @@ export const deleteUser = (user) => {
       dispatch(userDeleted(user));
     }).catch((error) => {
       LOG.error(`HTTP DELETE failed: ${JSON.stringify(error)}`);
+      dispatch(errorAction(error));
     });
   };
 };
@@ -78,6 +88,6 @@ export const fetchUsers = init => (dispatch) => {
     }
   }).catch((error) => {
     LOG.error(`HTTP GET failed: ${JSON.stringify(error)}`);
-    return Promise.reject(error);
+    dispatch(errorAction(error));
   });
 };

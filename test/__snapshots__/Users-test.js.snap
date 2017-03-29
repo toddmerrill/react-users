@@ -2,141 +2,150 @@
 
 exports[`Users renders correctly 1`] = `
 <div>
+  <h1
+    className="title"
+  >
+    <img
+      src="test-file-stub"
+    />
+     react users
+  </h1>
   <div
-    className="leftList"
+    className="container"
   >
     <div
-      className="listHeader"
-    >
-      <h2
-        className="oneLine"
-      >
-        Users
-      </h2>
-      <span
-        className="rightButtons"
-      >
-        <a
-          className="nohover"
-          onClick={[Function]}
-        >
-          <span
-            className="btn-circle btn-ok"
-          />
-        </a>
-        <a
-          className="nohover"
-          onClick={[Function]}
-        >
-          <span
-            className="btn-circle btn-error"
-          />
-        </a>
-      </span>
-    </div>
-    <div
-      className="listItems"
+      className="leftList"
     >
       <div
-        className="listrow current-row"
-        onClick={[Function]}
+        className="listHeader"
       >
-        <h4>
+        <h2
+          className="oneLine"
+        >
+          Users
+        </h2>
+        <span
+          className="rightButtons"
+        >
+          <a
+            className="nohover addButton"
+            onClick={[Function]}
+          >
+            Add User
+          </a>
+          <a
+            className="nohover deleteButton"
+            onClick={[Function]}
+          >
+            Delete User
+          </a>
+        </span>
+      </div>
+      <div
+        className="listItems"
+      >
+        <div
+          className="listrow current-row"
+          onClick={[Function]}
+        >
+          <img
+            src="test-file-stub"
+          />
           test-first
            
           test-last
-        </h4>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    className="rightList"
-  >
-    <h2>
-      Personal Information
-    </h2>
-    <form
-      className="form-horizontal"
+    <div
+      className="rightList"
     >
-      <div
-        className="form-group"
+      <h2>
+        Personal Information
+      </h2>
+      <form
+        className="form-horizontal"
       >
-        <label
-          className="controlLabel"
-          htmlFor="inputfirstName"
-        >
-          First Name
-        </label>
         <div
-          className="controls"
+          className="form-group"
         >
-          <input
-            autoFocus={true}
-            className="form-control"
-            id="inputfirstName"
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="First Name"
-            tabIndex={1}
-            type="text"
-            value="test-first"
-          />
+          <label
+            className="controlLabel"
+            htmlFor="inputfirstName"
+          >
+            First Name
+          </label>
+          <div
+            className="controls"
+          >
+            <input
+              autoFocus={true}
+              className="form-control"
+              id="inputfirstName"
+              name="firstName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="First Name"
+              tabIndex={1}
+              type="text"
+              value="test-first"
+            />
+          </div>
         </div>
-      </div>
-      <div
-        className="form-group"
-      >
-        <label
-          className="controlLabel"
-          htmlFor="inputlastName"
-        >
-          Last Name
-        </label>
         <div
-          className="controls"
+          className="form-group"
         >
-          <input
-            autoFocus={undefined}
-            className="form-control"
-            id="inputlastName"
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Last Name"
-            tabIndex={2}
-            type="text"
-            value="test-last"
-          />
+          <label
+            className="controlLabel"
+            htmlFor="inputlastName"
+          >
+            Last Name
+          </label>
+          <div
+            className="controls"
+          >
+            <input
+              autoFocus={undefined}
+              className="form-control"
+              id="inputlastName"
+              name="lastName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Last Name"
+              tabIndex={2}
+              type="text"
+              value="test-last"
+            />
+          </div>
         </div>
-      </div>
-      <div
-        className="form-group"
-      >
-        <label
-          className="controlLabel"
-          htmlFor="inputage"
-        >
-          Age
-        </label>
         <div
-          className="controls"
+          className="form-group"
         >
-          <input
-            autoFocus={undefined}
-            className="form-control"
-            id="inputage"
-            name="age"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Age"
-            tabIndex={3}
-            type="text"
-            value="987"
-          />
+          <label
+            className="controlLabel"
+            htmlFor="inputage"
+          >
+            Age
+          </label>
+          <div
+            className="controls"
+          >
+            <input
+              autoFocus={undefined}
+              className="form-control"
+              id="inputage"
+              name="age"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Age"
+              tabIndex={3}
+              type="text"
+              value="987"
+            />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 `;

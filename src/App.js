@@ -28,6 +28,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actionCreators.deleteUser(user));
     dispatch(actionCreators.setCurrentUser(newCurrentUser));
   },
+  error: (error) => {
+    dispatch(actionCreators.errorAction(error));
+  },
+  resetErrors: () => {
+    dispatch(actionCreators.resetErrors());
+  },
 });
 
 const App = connect(mapStateToProps, mapDispatchToProps)(Users);

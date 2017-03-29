@@ -18,6 +18,12 @@ const router = (
         <Route path="/" component={Main}>
             <IndexRoute component={App}/>
         </Route>
+        <Route path="/react-users" component={Main}>
+            <IndexRoute component={App}/>
+        </Route>
+        <Route path="/react-users/index.html" component={Main}>
+            <IndexRoute component={App}/>
+        </Route>
     </Router>
 </Provider>);
 

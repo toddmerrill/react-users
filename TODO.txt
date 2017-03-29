@@ -1,10 +1,12 @@
 - fix routing from file perspective
 - deploy
 - refactor react components -> files
-- Remove Bootstrap
+- Replace Bootstrap
 - Unit testing coverage
 - Documentation
 - immutability / functional features
 - add promises error handling action
 - log levels filter for dev and prod (currently logging everything)
 - package.json has linux-only commands - convert to universal
+- form data validation
+- CSS for devices

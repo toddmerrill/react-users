@@ -8,9 +8,10 @@ exports[`UserList renders correctly 1`] = `
     className="listrow current-row"
     onClick={[Function]}
   >
-    <h4>
-       
-    </h4>
+    <img
+      src="test-file-stub"
+    />
+     
   </div>
 </div>
 `;

@@ -6,6 +6,5 @@
 - Documentation
 - immutability / functional features
 - log levels filter for dev and prod (currently logging everything)
-- package.json has linux-only commands - convert to universal
 - form data validation
 - CSS for devices

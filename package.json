@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "React.js implementation of a master/detail users form",
   "scripts": {
-    "clean": "rm -rf build",
+    "clean": "rimraf build",
     "prestart": "npm run clean",
     "start": "webpack-dev-server --progress --colors --content-base build/",
     "build:bundle": "webpack",
@@ -67,6 +67,7 @@
     "jest": "^19.0.2",
     "mocha": "^3.0.2",
     "react-test-renderer": "^15.4.2",
+    "rimraf": "^2.6.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.3.0",

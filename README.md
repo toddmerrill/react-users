@@ -1,7 +1,7 @@
 # Welcome to my Users app!  
 
 Some people write [To Do lists](http://todomvc.com/), I write master/detail apps with a list of
-users on the left, and an auto-saved input form on the right.
+users on the left, and an auto-saved input form on the right.       [See Demo](http://toddmerrill.com/react-users)
 
 This one is a 'serverless' app implemented with React, Redux and ES6 on the
 front-end, with AWS API-Gateway and DynamoDB on the back-end.

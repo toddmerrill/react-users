@@ -1,11 +1,13 @@
-import React from 'react'
-import { UserHeader } from '../src/components/Users.js'
-import renderer from 'react-test-renderer'
+import React from 'react';
+import { UserHeader } from '../src/components/Users';
+import ReactTestUtils from 'react-addons-test-utils';
 import mock from './user-mocks'
 
+const shallowRenderer = ReactTestUtils.createRenderer();
+
 it('UserHeader renders correctly', () => {
-    const tree = renderer.create(
+    const tree = shallowRenderer.render(
         <UserHeader users={mock.users} currentUser={mock.user} addUser={mock.f} removeUser={mock.f}/>
-    ).toJSON();
+    );
     expect(tree).toMatchSnapshot();
 });

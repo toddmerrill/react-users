@@ -16,136 +16,63 @@ exports[`Users renders correctly 1`] = `
     <div
       className="leftList"
     >
-      <div
-        className="listHeader"
-      >
-        <h2
-          className="oneLine"
-        >
-          Users
-        </h2>
-        <span
-          className="rightButtons"
-        >
-          <a
-            className="nohover addButton"
-            onClick={[Function]}
-          >
-            Add User
-          </a>
-          <a
-            className="nohover deleteButton"
-            onClick={[Function]}
-          >
-            Delete User
-          </a>
-        </span>
-      </div>
-      <div
-        className="listItems"
-      >
-        <div
-          className="listrow current-row"
-          onClick={[Function]}
-        >
-          <img
-            src="test-file-stub"
-          />
-          test-first
-           
-          test-last
-        </div>
-      </div>
+      <UserHeader
+        addUser={[Function]}
+        currentUser={
+          Object {
+            "age": "987",
+            "firstName": "test-first",
+            "lastName": "test-last",
+            "userId": "testId",
+          }
+        }
+        log={undefined}
+        removeUser={[Function]}
+        users={
+          Array [
+            Object {
+              "age": "987",
+              "firstName": "test-first",
+              "lastName": "test-last",
+              "userId": "testId",
+            },
+          ]
+        }
+      />
+      <UserList
+        currentUser={
+          Object {
+            "age": "987",
+            "firstName": "test-first",
+            "lastName": "test-last",
+            "userId": "testId",
+          }
+        }
+        userClick={[Function]}
+        users={
+          Array [
+            Object {
+              "age": "987",
+              "firstName": "test-first",
+              "lastName": "test-last",
+              "userId": "testId",
+            },
+          ]
+        }
+      />
     </div>
-    <div
-      className="rightList"
-    >
-      <h2>
-        Personal Information
-      </h2>
-      <form
-        className="form-horizontal"
-      >
-        <div
-          className="form-group"
-        >
-          <label
-            className="controlLabel"
-            htmlFor="inputfirstName"
-          >
-            First Name
-          </label>
-          <div
-            className="controls"
-          >
-            <input
-              autoFocus={true}
-              className="form-control"
-              id="inputfirstName"
-              name="firstName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="First Name"
-              tabIndex={1}
-              type="text"
-              value="test-first"
-            />
-          </div>
-        </div>
-        <div
-          className="form-group"
-        >
-          <label
-            className="controlLabel"
-            htmlFor="inputlastName"
-          >
-            Last Name
-          </label>
-          <div
-            className="controls"
-          >
-            <input
-              autoFocus={undefined}
-              className="form-control"
-              id="inputlastName"
-              name="lastName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Last Name"
-              tabIndex={2}
-              type="text"
-              value="test-last"
-            />
-          </div>
-        </div>
-        <div
-          className="form-group"
-        >
-          <label
-            className="controlLabel"
-            htmlFor="inputage"
-          >
-            Age
-          </label>
-          <div
-            className="controls"
-          >
-            <input
-              autoFocus={undefined}
-              className="form-control"
-              id="inputage"
-              name="age"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Age"
-              tabIndex={3}
-              type="text"
-              value="987"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
+    <UserForm
+      onBlur={[Function]}
+      onChange={[Function]}
+      user={
+        Object {
+          "age": "987",
+          "firstName": "test-first",
+          "lastName": "test-last",
+          "userId": "testId",
+        }
+      }
+    />
   </div>
 </div>
 `;

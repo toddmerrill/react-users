@@ -1,11 +1,13 @@
 import React from 'react';
 import { UserFormInput } from '../src/components/Users.js';
-import renderer from 'react-test-renderer';
+import ReactTestUtils from 'react-addons-test-utils';
 import mock from './user-mocks'
 
+const shallowRenderer = ReactTestUtils.createRenderer();
+
 it('UserFormInput renders correctly', () => {
-    const tree = renderer.create(
+    const tree = shallowRenderer.render(
         <UserFormInput user={mock.user} fieldName='testFieldName' fieldLabel='testFieldLabel'/>
-    ).toJSON();
+    );
     expect(tree).toMatchSnapshot();
 });

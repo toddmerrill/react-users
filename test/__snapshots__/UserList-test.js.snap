@@ -4,14 +4,14 @@ exports[`UserList renders correctly 1`] = `
 <div
   className="listItems"
 >
-  <div
-    className="listrow current-row"
+  <User
+    isCurrentUser={true}
     onClick={[Function]}
-  >
-    <img
-      src="test-file-stub"
-    />
-     
-  </div>
+    user={
+      Object {
+        "userId": "testorama",
+      }
+    }
+  />
 </div>
 `;
